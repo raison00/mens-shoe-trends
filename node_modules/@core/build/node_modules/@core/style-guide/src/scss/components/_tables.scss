@@ -1,0 +1,52 @@
+//1. First include variable overrides --
+//
+// Table Variables
+//
+
+// These control the background color for the table and even rows
+$table-even-row-bg: #fff !default;
+
+// These control the table cell border style
+$td-left-border: 1px solid #ddd;
+
+// These control the table head styles
+$table-head-font-size: emCalc(14px) !default;
+$table-head-padding: emCalc(8px) emCalc(10px) emCalc(10px) !default;
+
+// These control the row padding and font styles
+$table-row-padding: emCalc(9px) emCalc(10px) !default;
+$table-row-font-size: emCalc(14px) !default;
+$table-line-height: emCalc(18px) !default;
+
+// These are for controlling the display and margin of tables
+$table-margin-bottom: emCalc(20px) !default;
+
+
+//2. Then import the Foundation file you're updating --
+@import "~@core/vendor/scss/foundation-4.3.2/components/tables";
+
+//3. Lastly include your override to the foundation component such as mixin --
+
+//
+// Table Mixin
+//
+@mixin table {
+
+  thead,
+  tfoot {
+
+    tr {
+      th,
+      td {
+        border: $td-left-border;
+      }
+    }
+  }
+
+  tr {
+    th,
+    td {
+      border: $td-left-border;
+    }
+  }
+}

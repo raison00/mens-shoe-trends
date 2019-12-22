@@ -1,0 +1,119 @@
+
+<div id="textured-desktop" class="desktop-only desktop-margin-top">
+	<div id="textured-hero-desktop">
+		<div id="textured-it-list-desktop">
+			<img src="https://assets.macysassets.com/dyn_img/creativepages/C8070480_Desktop_itlist2.png"/ alt="the it list">
+		</div>
+		<div id="textured-hero-text">
+			<h2 class="shoes-section-header">
+				TEXTURED<br> &nbsp; &nbsp;DRESS SHOES
+			</h2>
+			<p class="shoes-header-text textured-hero-text">
+				Distinctive patterns & <br> intriguing details are the <br> foundation of your look.
+			</p>
+			<a href="{{ENV_HOSTNAME}}/catalog/index.ognc?CategoryID=198354" data-cm="textureddressshoe_shopnow">
+				<div class="desktop-shoe-shop textured-button">
+					<p class="button-text">SHOP NOW</p>
+				</div>
+			</a>
+		</div>
+		<div id="textured-copy">
+			<p class="how-to-wear textured-wear-it">HOW TO WEAR IT:</p>
+			<p class="section-copy textured-section-copy">The exclamation point on your suit. Partner with <br> clean, navy tailoring to get that lapel-to-toe polish.</p>
+		</div>
+
+	</div>
+
+
+	<div id="ProductCarousel">
+		<div id="gridWrapper">
+		<!-- Horizontal Carousel Example Template (htemp.hbs)-->
+			<div id="horizontal-holder6">
+				<div class="componentCarousel horizontal">
+					<div class="table-row">
+						<div class="table-cell">
+						    <button disabled="true" class="m-carousel-button prev" aria-label="scroll carousel left">
+	                            <span class="icon-ui-chevron-left-bk-huge"></span>
+	                        </button>
+						</div>
+						<div class="table-cell">
+							<div class="carouselWrapper">
+								<div class="scroller">
+									<ul class="carousel" tabindex="0" aria-label="carousel">
+									    {{#each apiData}}
+										    {{#ifCond this.product.id '===' 6373212}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6640892}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6605764}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6612188}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+		                                    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6373221}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6210799}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+	                                    {{/each}}
+	                                </ul>
+								</div>
+							</div>
+							<div class="table-cell">
+		                        <button disabled="true" class="m-carousel-button next" aria-label="scroll carousel right">
+		                            <span class="icon-ui-chevron-right-bk-huge"></span>
+		                        </button>
+	                    	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="mobile-only">
+	<div id="textured-hero-mobile">
+		<div id="textured-hero-text">
+			<h2 class="shoes-section-header">
+				TEXTURED DRESS SHOES
+			</h2>
+			<img id="textured-it-list-mobile" src="//assets.macysassets.com/dyn_img/creativepages/C8070480_Mobile_itlist_1534022745833.png"/ alt="the it list">
+
+			<p class="shoes-header-text textured-hero-copy">
+				Distinctive patterns & intriguing details are the foundation of your look.
+			</p>
+			<a href="{{ENV_HOSTNAME}}/catalog/index.ognc?CategoryID=198354" data-cm="textureddressshoe_shopnow">
+				<div class="desktop-shoe-shop textured-button">
+					<p class="button-text">SHOP NOW</p>
+				</div>
+			</a>
+		</div>
+		<div id="textured-copy">
+			<p class="how-to-wear textured-wear-it">HOW TO WEAR IT:</p>
+			<p class="shoes-header-text textured-section-copy">The exclamation point on your suit. Partner with clean, navy tailoring to get that lapel-to-toe polish.</p>
+		</div>
+	</div>
+</div>

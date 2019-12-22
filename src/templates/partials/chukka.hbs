@@ -1,0 +1,117 @@
+
+<div id="chukka-desktop" class="desktop-only desktop-margin-top">
+	<div id="chukka-hero-desktop">
+		<div id="chukka-hero-text">
+			<h2 class="shoes-section-header">
+				CHUKKA BOOTS
+			</h2>
+			<p class="shoes-header-text">
+				Blaze new trails in bold colors, <br> statement prints & defining patches.
+			</p>
+			<a href="{{ENV_HOSTNAME}}/shop/mens-clothing/mens-boots/Shoe_style/Chukkas?id=55637" data-cm="chukkaboot_shopnow">
+				<div class="desktop-shoe-shop">
+					<p class="button-text">SHOP NOW</p>
+				</div>
+			</a>
+		</div>
+		<img id="chukka-itlist" src="https://assets.macysassets.com/dyn_img/creativepages/C8070480_Desktop_itlist1.png"/>
+		<div id="chukka-copy">
+			<p class="how-to-wear">HOW TO WEAR IT:</p>
+			<p class="section-copy">The ultimate varsity-inspired shoe. Pair back to a chino & <br> rugby polo or an old-school letterman jacket to complete the look.</p>
+		</div>
+
+	</div>
+
+
+	<div id="ProductCarousel">
+		<div id="gridWrapper">
+		<!-- Horizontal Carousel Example Template (htemp.hbs)-->
+			<div id="horizontal-holder2">
+				<div class="componentCarousel horizontal">
+					<div class="table-row">
+						<div class="table-cell">
+						    <button disabled="true" class="m-carousel-button prev" aria-label="scroll carousel left">
+	                            <span class="icon-ui-chevron-left-bk-huge"></span>
+	                        </button>
+						</div>
+						<div class="table-cell">
+							<div class="carouselWrapper">
+								<div class="scroller">
+									<ul class="carousel" tabindex="0" aria-label="carousel">
+									    {{#each apiData}}
+										    {{#ifCond this.product.id '===' 6125931}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6552858}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 4780528}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6642895}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 5470539}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6069120}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+	                                    {{/each}}
+	                                </ul>
+								</div>
+							</div>
+							<div class="table-cell">
+		                        <button disabled="true" class="m-carousel-button next" aria-label="scroll carousel right">
+		                            <span class="icon-ui-chevron-right-bk-huge"></span>
+		                        </button>
+	                    	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="mobile-only">
+	<div id="chukka-hero-mobile">
+		<div id="chukka-hero-text">
+			<h2 class="shoes-section-header chukka-mobile-header">
+				CHUKKA <br>BOOTS
+			</h2>
+			<img id="chukka-itlist" src="//assets.macysassets.com/dyn_img/creativepages/C8070480_Mobile_itlist_1534022745833.png"/>
+			<p class="chukka-hero-text shoes-header-text">
+				Blaze new trails in bold colors, statement prints & defining patches.
+			</p>
+			<a href="{{ENV_HOSTNAME}}/shop/mens-clothing/mens-boots/Shoe_style/Chukkas?id=55637" data-cm="chukkaboot_shopnow">
+				<div class="desktop-shoe-shop">
+					<p class="button-text">SHOP NOW</p>
+				</div>
+			</a>
+		</div>
+		<div id="chukka-copy">
+			<p class="how-to-wear">HOW TO WEAR IT:</p>
+			<p class="shoes-header-text">The ultimate varsity-inspired shoe. Pair back to a chino & rugby polo or an old-school letterman jacket to complete the look.</p>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,272 @@
+// These are the comments for DSS
+// By running `grunt dss`, these get parsed into a json file,
+// which is then imported to ui-standards.herokuapp.com
+// ======================================================================================
+/**
+  * @name Headers
+  * @section Typography
+  * @sectionIntro The typography styles set for Macy’s are meant to provide clean, simple default styles for you to use within your projects. Add class <code>.csg_v1</code> to body tag to use typography styles.<h5>Font-Family</h5><p>Macy’s uses <code>Helvetica Neue</code> as our primary font-family due to it’s versatility and clean style. The fallback for Helvetica Neue is it’s close family member, <code>Helvetica</code>.</p><h5>Baseline</h5><p>The baseline for MCOM is <code>1em = 16px</code>. With this baseline, <strong>everything is relative to this size</strong>. From an accessibility point-of-view, this works because it is a very comfortable and legible font-size to read. More importantly, it allows the content of our site to <strong>scale proportionally</strong>. <a href="http://pxtoem.com" target="_blank">PxtoEm</a> is a fantastic and easy calculator to use when converting pixels to ems.</p><h5>Baseline Grid</h5><p>To achieve <strong>vertical rhythm</strong>, the <code>baseline grid is 12px (0.75em)</code>. All pages should be designed using spacing units of 12 between components. This means that <strong>all line-heights and margins (margin-top and margin-bottom) should always be a multiple of 12</strong>. When the baseline grid is followed, it creates a visually pleasing and deliberate vertical rhythm on the page.</p><h5>Line-height</h5><p>The line-heights set for Macy’s typography are all <code>multiples of 12, following the 12px baseline grid</code>. But in order for line-height to <strong>scale proportionally</strong> to the text, we need to <strong>define this value in ems</strong>. To get the em value, we divide the line-height in pixels by the font-size in pixels. The line-height is not based off the baseline of 1em, it is actually based on the font-size defined by it’s parent or current class.</p><p>Using our <strong>H1 Header</strong> as an example:</p><ul style="padding-left: 40px;"><li>h1 font-size = 36 pixels &#x279D; 36 &#247; 16 = <strong>2.25rem</strong></li><li>line-height in em = line-height in pixels &#247; font-size in pixels</li><li>h1 line-height = 48px &#x279D; 48 &#247; 36 = <strong>1.33333rem</strong></li></ul>
+  *  @cssFile File Location: Included in macys-base.css
+  * @markup
+  *  <div class="csg_v1">
+  *     <span class="type-label">H1 Header - 2.25rem(36px)/1.33333em(48px)</span>
+  *     <h1>The quick brown fox jumps over the lazy dog.</h1>
+  *     <span class="type-label">H2 Header, 1.75rem(28px)/(1.28571em)36px</span>
+  *     <h2>The quick brown fox jumps over the lazy dog.</h2>
+  *     <span class="type-label">H3 Header, 1.5rem(24px)/1em(24px)</span>
+  *     <h3>The quick brown fox jumps over the lazy dog.</h3>
+  *     <span class="type-label">H4 Header, 1.125rem(18px)/1.33333em(24px)</span>
+  *     <h4>The quick brown fox jumps over the lazy dog.</h4>
+  *     <span class="type-label">H5 Header, 1rem(16px)/1.5(24px)</span>
+  *     <h5>The quick brown fox jumps over the lazy dog.</h5>
+  *     <span class="type-label">H6 Header, 0.875rem(14px)/1.71429em(24px)</span>
+  *     <h6>The quick brown fox jumps over the lazy dog.</h6>
+  *  </div>
+  */
+/**
+  *  @name Body Copy
+  *  @section Typography
+  *  @description <h5>Default Size</h5><p><code>The default font-size for our paragraph style is set to 1rem (16px)</code>. We understand that for certain cases, this size is too big. When using this default, <strong>use your best judgement to determine if this works for your project</strong>. If you need to use a smaller font-size, you will need to <strong>create your own class and override the styles</strong>.</p><h5>Minimum Size</h5><p>While legal is set to 0.75rem (12px), <code>we do not recommend using anything smaller than 0.75rem (12px)</code>. This is to <strong>reduce the need for users with low visibility</strong> to make use of browser based text resize or page zoom, as well as for those users who do not have access to assistive technology to resize content for their needs.</p>
+  *  @cssFile File Location: Included in macys-base.css
+  *  @markup
+  *    <div class="csg_v1">
+  *         <span class="type-label">Paragraph, 1rem(16px)/1.5(24px)</span>
+  *         <h2>Paragraph</h2>
+  *         <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap strong around type to <strong>make it bold!</strong>. You can also use em to italicize your words.</p>
+  *      <div class="legal_disclaimer">
+  *         <h2>Legal</h2>
+  *         <p>
+  *         legal, terms & condistions, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  *          </p>
+  *      </div>
+  *    </div>
+  */
+
+
+
+// Typography Variables
+//
+
+// Heading font styles
+
+$header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-weight: bold;
+$header-font-style: normal;
+$header-bottom-margin: 24px;
+$header-padding-top:6px;
+$header-text-rendering: optimizeLegibility;
+
+// Heading font sizes
+
+// font size
+$h1-font-size:36px;
+$h2-font-size:28px;
+$h3-font-size:24px;
+$h4-font-size:18px;
+$h5-font-size:16px;
+$h6-font-size:14px;
+
+// line-height
+// calculated by 12 baseline grid in px
+$h1-line-height:48px;
+$h2-line-height:36px;
+$h3-line-height:24px;
+$h4-line-height:24px;
+$h5-line-height:24px;
+$h6-line-height:24px;
+
+
+// font size for standard forms
+$h1-form-font-size:28px;
+$h2-form-font-size:24px;
+$h3-form-font-size:18px;
+$h4-form-font-size:16px;
+$h5-form-font-size:14px;
+$h6-form-font-size:12px;
+
+// line-height for standard forms
+// calculated by 12 baseline grid in px
+$h1-form-line-height:36px;
+$h2-form-line-height:24px;
+$h3-form-line-height:24px;
+$h4-form-line-height:24px;
+$h5-form-line-height:24px;
+$h6-form-line-height:24px;
+
+
+// Paragraphs
+$paragraph-font-family:Helvetica Neue,Helvetica, Arial, Sans-Serif;
+$paragraph-font-weight: normal;
+$paragraph-font-size: 16px;
+$paragraph-line-height:24px /*18px*/;
+$paragraph-margin-bottom: 12px;  //based on 6 baseline-grid
+$paragraph-text-rendering: optimizeLegibility;
+
+
+
+//Style for legal disclaimer paragraph
+$paragraph-legal-font-size: 12px;
+$paragraph-legal-line-heigt:18px;
+$paragraph-legal-color:#666;
+
+
+
+// <code> tags
+
+// $code-color: darken($alert-color, 15%);
+// $code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
+// $code-font-weight: bold;
+
+// Anchors
+
+// $anchor-text-decoration: none;
+// $anchor-font-color: $primary-color;
+// $anchor-font-color-hover: darken($primary-color, 5%);
+
+@function ceil-Round ($number, $digits: 0) {
+    $n: 1;
+    // $number must be a number
+    @if type-of($number) != number {
+        @warn '#{ $number } is not a number.';
+        @return $number;
+    }
+    // $digits must be a unitless number
+    @if type-of($digits) != number {
+        @warn '#{ $digits } is not a number.';
+        @return $number;
+    } @else if not unitless($digits) {
+        @warn '#{ $digits } has a unit.';
+        @return $number;
+    }
+    @for $i from 1 through $digits {
+        $n: $n * 10;
+    }
+
+        @return ceil($number * $n) / $n;
+
+}
+
+@mixin Header_base($h-font-size,$header_line_height){
+  font-family: $header-font-family;
+  font-weight: $header-font-style;
+  text-decoration: none;
+  color:#333;
+  text-rendering:$header-text-rendering;
+  //font-size:emCalc($h-font-size);
+  font-size:rem-calc($h-font-size);
+  line-height:strip-unit(em-calc($header_line_height,$h-font-size));
+  margin-bottom:em-calc($header-bottom-margin,$h-font-size);
+  padding-top:em-calc($header-padding-top,$h-font-size);
+}
+
+@mixin paragraph_base($para-font-size,$para_line_height){
+
+  font-family: $paragraph-font-family;
+  font-weight: $paragraph-font-weight;
+  text-decoration: none;
+  color:#333;
+  text-rendering:$paragraph-text-rendering;
+  //font-size:emCalc($para-font-size);
+  font-size:rem-calc($para-font-size);
+  line-height:strip-unit(ceil-Round(em-calc($para_line_height,$para-font-size),5));
+  margin-bottom:ceil-Round(em-calc($paragraph-margin-bottom,$para-font-size),5);
+}
+
+
+.csg_v1{
+
+    h1,h2,h3,h4,h5,h6,p{
+         margin:0;
+        padding:0;
+    }
+    h1{
+      @include Header_base($h-font-size:$h1-font-size,$header_line_height:$h1-line-height);
+      & + h2,+h3,+h4,+h5,+h6{
+          padding-top:0;
+      }
+    }
+    h2{
+      @include Header_base($h-font-size:$h2-font-size,$header_line_height:$h2-line-height);
+      & + h1,+h3,+h4,+h5,+h6{
+          padding-top:0;
+      }
+    }
+    h3{
+      @include Header_base($h-font-size:$h3-font-size,$header_line_height:$h3-line-height);
+      & +h1,+h2,+h4,+h5,+h6{
+          padding-top:0;
+      }
+    }
+    h4{
+      @include Header_base($h-font-size:$h4-font-size,$header_line_height:$h4-line-height);
+      & +h1,+h2,+h3,+h5,+h6{
+          padding-top:0;
+      }
+    }
+    h5{
+
+      @include Header_base($h-font-size:$h5-font-size,$header_line_height:$h5-line-height);
+      & +h1,+h2,+h3,+h4,+h6{
+          padding-top:0;
+      }
+      font-weight:bold;
+    }
+    h6{
+      @include Header_base($h-font-size:$h6-font-size,$header_line_height:$h6-line-height);
+      & + h1,+h2,+h3,+h4,+h5{
+          padding-top:0;
+      }
+    }
+    p{
+      @include paragraph_base($para-font-size:$paragraph-font-size,$para-line-height:$paragraph-line-height);
+
+    }
+    strong,b {
+    font-weight: bold;
+    }
+    .legal_disclaimer{
+        p{
+            @include paragraph_base($para-font-size:$paragraph-legal-font-size,$para-line-height:$paragraph-legal-line-heigt);
+            color:$paragraph-legal-color;
+        }
+    }
+  .type-label {
+  color: #999;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: normal;
+  }
+
+  .standard-form {
+      h1{
+        @include Header_base($h-font-size:$h1-form-font-size,$header_line_height:$h1-form-line-height);
+    }
+      h2{
+        @include Header_base($h-font-size:$h2-form-font-size,$header_line_height:$h2-form-line-height);
+    }
+      h3{
+        @include Header_base($h-font-size:$h3-form-font-size,$header_line_height:$h3-form-line-height);
+    }
+      h4{
+        @include Header_base($h-font-size:$h4-form-font-size,$header_line_height:$h4-form-line-height);
+    }
+      h5{
+        @include Header_base($h-font-size:$h5-form-font-size,$header_line_height:$h5-form-line-height);
+    }
+      h6{
+        @include Header_base($h-font-size:$h6-form-font-size,$header_line_height:$h6-form-line-height);
+    }
+  }
+}
+
+
+
+.edv-badge {
+  &::before {
+    content: 'edv';
+    letter-spacing: -2px;
+    font-size: 16px;
+    font-family: monospace;
+    font-weight: bold;
+  }
+}

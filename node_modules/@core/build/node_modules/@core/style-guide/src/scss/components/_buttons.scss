@@ -1,0 +1,438 @@
+//1. First include variable overrides --
+
+//
+// Button Variables
+//
+//custom padding rules
+$button-padding-top-bottom: 0.875em;
+$button-padding-left-right: 2em;
+
+
+
+// $primary-color: $macysRed; //#c00
+// $primary-color-active: $macysRedHover;  //#af0000
+// $primary-color-disabled: lighten($primary-color, 0.4);
+// $primary-font-color: $macysWhite;
+
+// $secondary-color: $macysGrey6; //#eee;
+// $secondary-color-active: $macysGrey5; //#ccc;
+// $secondary-color-disabled: lighten($secondary-color, 0.4);
+// $secondary-font-color: $macysGrey1;
+
+// $tertiary-color: $macysGrey1;  //#333;
+// $tertiary-color-active: $macysBlack;
+// $tertiary-color-disabled: lighten($tertiary-color, 0.4);
+
+// $textlink-font-color: $macysGrey1; //#333;
+// $textlink-font-color-active: $macysBlack;//#000;
+// $textlink-font-weight-tiny: 700;
+
+
+
+
+
+
+// We use these to control button text styles.
+$button-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$button-font-color: $primary-font-color !default;
+$button-font-color-alt: $secondary-font-color !default;
+$button-font-color-tertiary: $tertiary-color !default;
+$button-font-color-tertiary-active: $tertiary-color-active !default;
+
+$button-font-lrg: $font-size-large !default;//em-calc(20) !default;
+$button-font-med: $font-size-medium !default;//em-calc(16) !default;
+$button-font-tny: $font-size-tiny !default;
+$button-font-sml: $font-size-small !default;//em-calc(13) !default;
+
+$button-font-weight: 500 !default;
+$button-font-weight-tny: 700 !default;
+
+$button-font-align: center !default;
+
+$button-disabled-opacity: 0.4 !default;
+$button-disabled-opacity-tertiary: 0.5 !default;
+
+
+//2. Then import the Foundation file you're updating --
+@import "~@core/vendor/scss/foundation-4.3.2/components/buttons";
+
+//3. Lastly include your override to the foundation component such as mixin --
+//
+// Button Mixins
+//
+
+// We use this mixin to create a default button base.
+@mixin button-base($style:true, $display:$button-display) {
+  @if $style {
+    margin: 0 0 $button-margin-bottom 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    &:active {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+
+// We use this mixin to add button size styles
+@mixin button-size($padding:$button-med, $full-width:false, $is-input:false,$csgv1:false) {
+
+  // We control which padding styles come through,
+  // these can be turned off by setting $padding:false
+  @if $padding {
+
+    @if $csgv1==false{
+      // We control the font-size based on mixin input.
+      padding-top: $button-padding-top-bottom;
+      padding-#{$opposite-direction}: $button-padding-left-right;
+      padding-bottom: $button-padding-top-bottom;
+      padding-#{$default-float}: $button-padding-left-right;
+      @if      $padding == $button-med { font-size: $button-font-med; }
+      @else if $padding == $button-tny { font-size: $button-font-tny; font-weight: $button-font-weight-tny; }
+      @else if $padding == $button-sml { font-size: $button-font-sml; }
+      @else if $padding == $button-lrg { font-size: $button-font-lrg; }
+      @else                            { font-size: $padding - em-calc(2); }
+    }
+    @else{
+
+       @if      $padding == $button-med { font-size: $csg_v1_font-size-medium; }
+       @else if $padding == $button-tny { font-size: $csg_v1_font-size-tiny; font-weight: $button-font-weight-tny; }
+       @else if $padding == $button-sml { font-size: $csg_v1_font-size-small; }
+       @else if $padding == $button-lrg { font-size: $csg_v1_font-size-large; }
+       @else                            { font-size: $padding - em-calc(2); }
+
+    }
+  }
+
+  // We can set $full-width:true to remove side padding extend width.
+  @if $full-width {
+    // We still need to check if $padding is set.
+    @if $padding {
+    padding-top: $button-padding-top-bottom;
+    padding-bottom: $button-padding-top-bottom;
+    } @else if $padding == false {
+      padding-top:0;
+      padding-bottom:0;
+    }
+    padding-right: 0;
+    padding-left: 0;
+    width: 100%;
+  }
+
+}
+
+// We use this mixin to add button color styles
+@mixin button-style($bg:$primary-color, $border-color:$bg, $radius:false, $active:$primary-color-active, $border-color-active:$active, $font-color:$button-font-color, $disabled:false, $tertiary:false) {
+// $bg : background color for the button
+// $radius: defines button radius --> defaults to false.  Add .radius class to include radius
+// $active: background color for the button when it's active (focus)
+// $disabled: disabling the button
+
+  // We control which background styles are used,
+  // these can be removed by setting $bg:false
+  @if $bg {
+
+    background-color: $bg;
+    border-color: $border-color;
+    color: $font-color;
+    font-weight: $button-font-weight;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $active;
+      border-color: $border-color-active;
+    }
+
+    //We control the text color for you based on the background color.
+    @if $tertiary {
+      border: none;
+      background-color: none;
+      color: $button-font-color-tertiary;
+      font-weight: normal;
+      text-transform: capitalize;
+      text-decoration: underline;
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: none;
+        color: $button-font-color-tertiary-active;
+      }
+    }
+  }
+
+  // We can set $disabled:true to create a disabled transparent button.
+  @if $disabled {
+
+    border: lighten($border-color, $button-disabled-opacity);
+    background-color: lighten($bg, $button-disabled-opacity);
+    &:hover, &:focus, &:active {
+  //     text-decoration: none;
+  //     color: $global-disabled-font-color;
+  //     background-color: $bg;
+  //     border-color: $bg;
+        border: lighten($border-color, $button-disabled-opacity);
+        background-color: lighten($bg, $button-disabled-opacity);
+    }
+  //   &:active {
+  //     color: $global-disabled-font-color;
+  //     background-color: $bg;
+  //     border-color: $bg;
+  //   }
+    @if $tertiary{
+      opacity: $button-disabled-opacity-tertiary;
+      &:hover, &:focus, &:active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+}
+
+
+//
+// Button Classes
+//
+
+// Only include these classes if the variable is true, otherwise they'll be left out.
+@if $include-html-button-classes != false {
+
+// Default styles applied outside of media query
+  button, .button {
+    @include button-base;
+    @include button-size($padding:$button-med);
+    @include button-style;
+
+    &.secondary { @include button-style($bg:$secondary-color, $border-color:$macysGrey1, $active:$secondary-color-active, $border-color-active:$macysGrey1, $font-color:$button-font-color-alt); }
+    &.tertiary  { @include button-style($bg:transparent, $active:transparent, $font-color:$button-font-color-tertiary, $tertiary:true); }
+
+    &.large  { @include button-size($padding:$button-lrg); }
+    &.small  { @include button-size($padding:$button-sml); }
+    &.tiny   { @include button-size($padding:$button-tny); }
+    &.expand { @include button-size($padding:null,$full-width:true); }
+
+    &.left-align  { text-align: left; text-indent: em-calc(12); }
+    &.right-align { text-align: right; padding-right: em-calc(12); }
+
+    &.disabled, &[disabled] { @include button-style($bg:$primary-color, $disabled:true);
+      &.secondary {@include button-style($bg:$secondary-color, $border-color:$macysGrey1, $active:$secondary-color-active, $border-color-active:$macysGrey1, $font-color:$button-font-color-alt, $disabled: true); }
+      &.tertiary  { @include button-style($bg:transparent, $active:transparent, $font-color:$button-font-color-tertiary, $tertiary:true, $disabled:true); }
+    }
+
+    // &.loadermask  { @include button-style( $bg:rgba($primary-color, 0.4) );
+    //   &.secondary { @include button-style( $bg:rgba($secondary-color, 0.4) ); }
+    //   &.tertiary  { @include button-style( $bg:rgba($tertiary-color, 0.4) ); }
+    //   &.success   { @include button-style( $bg:rgba($success-color, 0.4) ); }
+    //   &.alert     { @include button-style( $bg:rgba($alert-color, 0.4) ); }
+    // }
+
+  }
+
+  .csg_v1 button,.csg_v1 a.button,.csg_v1 input.button {
+    @include button-size($padding:$button-med,$csgv1:true);
+    &.large  { @include button-size($padding:$button-lrg, $csgv1:true); }
+    &.small  { @include button-size($padding:$button-sml, $csgv1:true); }
+    &.tiny   { @include button-size($padding:$button-tny, $csgv1:true); }
+
+  }
+
+  button, .button {
+    @include button-size($padding:false, $is-input:$button-med);
+    &.tiny { @include button-size($padding:false, $is-input:$button-tny); }  // we're not using this for desktop
+    &.small { @include button-size($padding:false, $is-input:$button-sml); }
+    &.large { @include button-size($padding:false, $is-input:$button-lrg); }
+
+    > span.right { margin-left: 5px; }
+    > span.left  { margin-right: 5px; }
+  }
+
+  // Styles for any browser or device that support media queries
+  @media only screen {
+
+    button, .button {
+      //@include inset-shadow();
+      @include single-transition(background-color);
+
+      &.large  { @include button-size($padding:false, $full-width:false); }
+      &.small  { @include button-size($padding:false, $full-width:false); }
+      &.tiny   { @include button-size($padding:false, $full-width:false); }
+
+      &.radius { @include button-style($bg:false, $radius:true); }
+      &.round  { @include button-style($bg:false, $radius:$button-round); }
+
+    > span.right { margin-left: 5px; }
+    > span.left  { margin-right: 5px; }
+    }
+
+  }
+
+  // Additional styles for screens larger than 768px
+  @media #{$small} {
+
+    button, .button {
+      @include button-base($style:false, $display:inline-block);
+      @include button-size($padding:false, $full-width:false);
+    }
+
+  }
+
+  // a tag text styles
+  a {
+    color: $textlink-font-color;
+    text-decoration: underline;
+    transition: color 0.25s linear;
+    &.tiny   { font-size: $font-size-tiny; font-weight: normal; }
+    text-transform: capitalize;
+    &.small  { font-size: $font-size-small; }
+    &.medium { font-size: $font-size-medium; }
+    &.large  { font-size: $font-size-large; }
+    &:hover, &:focus {
+      color: $textlink-font-color;
+      text-decoration: none;
+    }
+    &:active {
+      color: $textlink-font-color-active;
+      text-decoration: none;
+    }
+
+    &.button{
+      &:focus{
+        outline: 1px dotted #212121;
+        outline: 5px auto -webkit-focus-ring-color;
+      }
+    }
+  }
+  footer a{
+    text-transform: none;
+  }
+
+}
+
+
+
+// These are the comments for DSS
+// By running `grunt dss`, these get parsed into a json file,
+// which is then imported to ui-standards.herokuapp.com
+// ======================================================================================
+
+/**
+  * @name Primary Buttons
+  * @section Buttons
+  * @sectionIntro Buttons are used for all user action, and have 4 distinct priorities: Primary, secondary(<code>.secondary</code>), tertiary(<code>.tertiary</code>) and link. The hover state for buttons have been disabled to create a more consistent experience with tablet & mobile devices. Buttons have 4 available sizes <code>.tiny</code>,<code>.small</code>, <code>.large</code>, and medium which is the default and does not require a class. A <code>.button</code> class is provided to support anchor tags to be styled as buttons. Corner radius <code>.radius</code> is removed from 15H going forward. The standard disable styling is provided using the <code>.disabled</code> class. All button classes are included in <code>macys-base.css</code>.<p><strong>Accessibility:</strong> Add <code>role="button"</code> when the visual presentation is displayed as a button but the HTML does not use the button element.  Disabled buttons should include the attribute <code>aria-disabled="true"</code>.</p>
+  * @markup
+  *<div>
+  *   <button class="tiny">Shop Now</button>
+  *   <button class="small">Shop Now</button>
+  *   <button>Shop Now</button>
+  *   <button class="large">Shop Now</button>
+  *   <div class="row">
+  *     <p>for MEW buttons, add 'expand' class to take up entire width:
+  *     <div class="small-16 medium-8">
+  *       <button class="small expand">Add to bag</button>
+  *     </div>
+  *     <div class="small-16 medium-8">
+  *       <button class="small secondary expand">Add to List</button>
+  *
+  *     </div>
+  *   </div>
+  *  <br/>
+  *   <p>Anchor tags as primary buttons</p>
+  *   <a class="button tiny" role="button">Shop Now</a>
+  *   <a class="button small" role="button">Shop Now</a>
+  *   <a class="button" role="button">Shop Now</a>
+  *   <a class="button large" role="button">Shop Now</a>
+  *  <br/>
+  *   <p>Button usage with icons - deprecated</p>
+  *   <p>&nbsp;&nbsp;&nbsp;&nbsp;avoid using icons within buttons from 16F onward</p>
+  *   <button class="small disabled">Add to Bag <span class="add_to_bag-small inline-icon-small"></span></button>
+  *  <br/>
+  *   <p>Disabled buttons - same for primary, secondary, and tertiary</p>
+  *   <a class="button tiny disabled" role="button" disabled aria-disabled="true">Coming Soon</a>
+  *   <a class="button small disabled" role="button" disabled aria-disabled="true">Coming Soon</a>
+  *   <a class="button disabled" role="button" disabled aria-disabled="true">Coming Soon</a>
+  *   <a class="button large disabled" role="button" disabled aria-disabled="true">Coming Soon</a>
+  *</div>
+  */
+
+/**
+  * @name Secondary Buttons
+  * @section Buttons
+  * @markup
+  *<div>
+  *   <button class="secondary tiny">Shop Now</button>
+  *   <button class="secondary small">Shop Now</button>
+  *   <button class="secondary">Shop Now</button>
+  *   <button class="secondary large">Shop Now</button>
+  *  <br/>
+  *   <p>Anchor tags as secondary buttons</p>
+  *   <a class="button secondary tiny" role="button">Shop Now</a>
+  *   <a class="button secondary small" role="button">Shop Now</a>
+  *   <a class="button secondary" role="button">Shop Now</a>
+  *   <a class="button secondary large" role="button">Shop Now</a>
+  *</div>
+  *
+  */
+
+/**
+  * @name Tertiary Buttons
+  * @section Buttons
+  * @markup
+  *<div>
+  *   <button class="tertiary tiny">Edit</button>
+  *   <button class="tertiary small">Edit</button>
+  *   <button class="tertiary">Edit</button>
+  *   <button class="tertiary large">Edit</button>
+  *  <br/>
+  *   <p>Anchor tags as tertiary buttons</p>
+  *   <a class="button tertiary tiny" role="button">Remove</a>
+  *   <a class="button tertiary small" role="button">Remove</a>
+  *   <a class="button tertiary" role="button">Remove</a>
+  *   <a class="button tertiary large" role="button">Remove</a>
+  *</div>
+  */
+
+/**
+  * @name Text Link
+  * @section Buttons
+  * @description Text link is used to initiate, progress or complete an action relevant to current context on screen view, but giving visual priority to all buttons.  There is no text-transformation for text links.  Text link by default is medium in size.
+  * @markup
+  * <p>Standard text link: (<a href="http://confluence5/pages/viewpage.action?title=Copy+Best+Practices&spaceKey=CAPCSG">copy standards</a> updated to be Title Case)</p>
+  *  <a class="tiny">Shop Now</a>
+  *  <a class="small">Shop Now</a>
+  *  <a class="medium">Shop Now</a>
+  *  <a class="large">Shop Now</a>
+  *  </br>
+  *  </br>
+  * <p>Text link in footer: </p>
+  *  <footer role="contentinfo">
+  *  <div class="row">
+  *    <div class="large-4 columns">&nbsp</div>
+  *    <div class="large-4 columns">
+  *      <ul>
+  *        <li><a class="large" href="#">CUSTOMER SERVICE</a></li>
+  *        <li><a class="medium" href="#">order tracking</a></li>
+  *        <li><a class="medium" href="#">shipping & delivery</a></li>
+  *      </ul>
+  *    </div>
+  *    <div class="large-4 columns">
+  *      <ul>
+  *        <li><a class="large" href="#">MACY'S CREDIT CARD</a></li>
+  *        <li><a class="medium" href="#">pay bill online</a></li>
+  *        <li><a class="medium" href="#">view credit acount</a></li>
+  *      </ul>
+  *    </div>
+  *    <div class="large-4 columns">&nbsp</div>
+  *  </div>
+  *  </footer>
+  */
+
+
+   // @section Buttons
+   // @disableCodeSample
+   // @ux
+   // Additional UX Guidelines
+   // @markup
+   // Buttons are used for all user action, and have 4 flavors: Primary, secondary, tertiary and link. Hover state for buttons are disabled on desktop to match experience on tablet & mobile.  For details, see <strong><a class="button small secondary" href="http://uxmacys/standards/buttons">UX + Creative button design documentation</a></strong>.
+
+

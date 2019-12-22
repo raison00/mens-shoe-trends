@@ -1,0 +1,243 @@
+// These are the comments for DSS 
+// By running `grunt dss`, these get parsed into a json file, 
+// which is then imported to ui-standards.herokuapp.com
+// ======================================================================================
+/**
+	*@section Components 
+	*@name MultiAccordion
+	*@description  MultiAccordion is a vertically stacked list of panels. Each item can be expanded to see the content associated with it. MultiAccordion can expand multiple panels at same time.<h5>CSS</h5><p>Import multiAccordion.scss in to your feature page and <code>include ui-accordion-navigation and ui-accordion-content</code> in scss file. multiAccordion.scss file is located in <code>src/common/_multiAccordion.scss</code></p><h5>MultiAccordion Functionality options</h5>
+	*@api
+	    available configuration options passed in as 'config' argument (new MultiAccordion(options))
+	        options
+	            active   - index of panel on multiAccordion that should be opened on load. By default it is 0
+	            duration - Duration that determines how long multiAccordion panel should be open
+	            header   - Header tag.By default it is H5
+	            icons    - Icons to be used for collapse and active header. By default it is "plus-small" on active 
+	    
+	    methods
+	        MultiAccordion.setActive(index,shouldToggle)-Method used to open MultiAccordion panel based on index.
+	            index- Can be index(number) of MultiAccordion or id of header that has to be opened
+	            shouldToggle - A Boolean value specifying if MultiAccordion panel should be opened
+	*@notes See docco for full documentation confluence/javascript/  
+	*@markup
+	*<script>
+	*require(['jquery','multiAccordion'],function($, MultiAccordion){
+	* var multiAccordion=new MultiAccordion( {
+	*         el: $('#accordion'),
+	          header:'> h5',
+	*        duration: 0,
+	*         active: [ 0 ]
+	*   } );
+	*  var hashMap={
+		"sample_product_details":"#product-details-header",
+		"sample_review":"#product-reviews-header",
+		"sample_product_QA":"#product-questions-answers-header",
+		"sample_Shipping_returns":"#product-shipping-returns-header",
+		"sample_special_offers":"#product-offers-header"
+		}
+	*  $("#sample_product_feature").click(function(e){
+*
+	*          e.preventDefault();
+	*            var targetId=hashMap[$(e.target).attr("class")];
+	*            sample_callSetActive(targetId); 
+	*          
+	*   })
+	*   function sample_callSetActive(headerId){
+	*           multiAccordion.setActive(headerId,true);
+	*     }
+*
+	*});
+	*</script>
+	*<div class="sample_accordion" id="sample_product_feature">
+	*  <a href="#" class="sample_product_details">Product Details</a>
+		<a href="#" class="sample_review">Review</a>
+		<a href="#" class="sample_product_QA">Product Q &amp; A</a>
+		<a href="#" class="sample_Shipping_returns">Shipping &amp; Returns</a>
+		<a href="#" class="sample_special_offers">Special Offers</a>
+	*</div>
+	*<div id="accordion">
+	*  <h5 id="product-details-header"  aria-controls="product-details-content" ><span>Product Details </span></h5>
+	*  <section id="product-details-content">
+	*      Detailed description of product.
+	*  </section>
+
+	*  <h5 id="product-reviews-header" aria-controls="product-reviews-content"><span>Reviews</span></h5>
+	*  <section id="product-reviews-content">
+	*      Details of product review.
+	*  </section>
+		<h5 id="product-questions-answers-header" aria-controls="product-questions-answers-content"  class="ui-accordion-header ui-helper-reset ui-state-default"><span>Product Q &amp; A </span></h5>
+		<section id="product-questions-answers-content" class="ui-accordion-content ui-helper-reset no-division" style="display: none;">
+			Questions and answer related to product.
+		</section>
+		<h5 id="product-shipping-returns-header" aria-controls="product-shipping-returns-content" class="ui-accordion-header ui-helper-reset ui-state-default"><span>Shipping &amp; Returns </span></h5>
+		<section id="product-shipping-returns-content" class="ui-accordion-content ui-helper-reset no-division" style="display: none;">
+			Shipping and return details of product.
+		</section>
+		<h5 id="product-offers-header" aria-controls="product-offers-content" class="ui-accordion-header ui-helper-reset ui-state-default"><span>Special Offers </span></h5>
+		<section id="product-offers-content" class="ui-accordion-content ui-helper-reset no-division" style="display: none;">
+			Special offers related to product.
+		</section>
+	</div> 
+**/
+
+/**
+	*@section Components 
+	*@name SingleAccordion
+	*@description  SingleAccordion is a vertically stacked list of panels. Each item can be expanded to see the content associated with it. SingleAccordion can expand single panels at same time. MultiAccordion module can be used to behave as single accordion.<h5>CSS</h5><p>Import multiAccordion.scss in to your feature page and <code>include ui-accordion-navigation and ui-accordion-content</code> in scss file. multiAccordion.scss file is located in <code>src/common/_multiAccordion.scss</code></p><h5>SingleAccordion Functionality options</h5>
+	*@api
+	    available configuration options passed in as 'config' argument (new MultiAccordion(options))
+	        options
+	            SingleAccord - Boolean value true if multiAccordion has to behave like single accordion. By default it is false.
+	            active   - index of panel on multiAccordion that should be opened on load. By default it is 0
+	            duration - Duration that determines how long multiAccordion panel should be open
+	            header   - Header tag.By default it is H5
+	            icons    - Icons to be used for collapse and active header. By default it is "plus-small" on active 
+	    
+	    methods
+	        MultiAccordion.setActive(index,shouldToggle)-Method used to open MultiAccordion panel based on index.
+	            index- Can be index(number) of MultiAccordion or id of header that has to be opened
+	            shouldToggle - A Boolean value specifying if MultiAccordion panel should be opened
+	*@notes See docco for full documentation confluence/javascript/  
+	*@markup
+	*<script>
+	*require(['jquery','multiAccordion'],function($, MultiAccordion){
+	* var multiAccordion=new MultiAccordion( {
+	*         el: $('#singleaccordion'),
+	          header:'> h5',
+	          SingleAccord:true,
+              duration: 0,
+	*         active: [ 0 ]
+	*   } );
+	*  var hashMap={
+		"sample_product_details":"#single-product-details-header",
+		"sample_review":"#single-product-reviews-header",
+		"sample_product_QA":"#single-product-questions-answers-header",
+		"sample_Shipping_returns":"#single-product-shipping-returns-header",
+		"sample_special_offers":"#single-product-offers-header"
+		}
+	*  $("#sample_single_product_feature").click(function(e){
+*
+	*          e.preventDefault();
+	*            var targetId=hashMap[$(e.target).attr("class")];
+	*            sample_callSetActive(targetId); 
+	*          
+	*   })
+	*   function sample_callSetActive(headerId){
+	*           multiAccordion.setActive(headerId,true);
+	*     }
+*
+	*});
+	*</script>
+	*<div class="sample_accordion" id="sample_single_product_feature">
+	*  <a href="#" class="sample_product_details">Product Details</a>
+		<a href="#" class="sample_review">Review</a>
+		<a href="#" class="sample_product_QA">Product Q &amp; A</a>
+		<a href="#" class="sample_Shipping_returns">Shipping &amp; Returns</a>
+		<a href="#" class="sample_special_offers">Special Offers</a>
+	*</div>
+	*<div id="singleaccordion">
+	*  <h5 id="single-product-details-header"  aria-controls="product-details-content" ><span>Product Details </span></h5>
+	*  <section id="single-product-details-content">
+	*      Detailed description of product.
+	*  </section>
+
+	*  <h5 id="single-product-reviews-header" aria-controls="product-reviews-content"><span>Reviews</span></h5>
+	*  <section id="single-product-reviews-content">
+	*      Details of product review.
+	*  </section>
+		<h5 id="single-product-questions-answers-header" aria-controls="product-questions-answers-content"  class="ui-accordion-header ui-helper-reset ui-state-default"><span>Product Q &amp; A </span></h5>
+		<section id="single-product-questions-answers-content" class="ui-accordion-content ui-helper-reset no-division" style="display: none;">
+			Questions and answer related to product.
+		</section>
+		<h5 id="single-product-shipping-returns-header" aria-controls="product-shipping-returns-content" class="ui-accordion-header ui-helper-reset ui-state-default"><span>Shipping &amp; Returns </span></h5>
+		<section id="single-product-shipping-returns-content" class="ui-accordion-content ui-helper-reset no-division" style="display: none;">
+			Shipping and return details of product.
+		</section>
+		<h5 id="single-product-offers-header" aria-controls="product-offers-content" class="ui-accordion-header ui-helper-reset ui-state-default"><span>Special Offers </span></h5>
+		<section id="single-product-offers-content" class="ui-accordion-content ui-helper-reset no-division" style="display: none;">
+			Special offers related to product.
+		</section>
+	</div> 
+**/
+
+//Variables
+$ui-accordion-margin:0 0 0 0 !default;
+$ui-accordion-padding:0.75em 0em !default;
+$ui-accordion-font-weight:700 !default;
+$ui-accordion-font-size:14px !default;
+$ui-accordion-box-shadow:0px 1px 0px #ccc !default;
+$ui-accordion-background:#f7f7f7;
+
+
+//ui active border color
+$accordion-active-border:1px solid #dedede;
+
+
+//ui accordion content
+$ui-accordion-border:1px solid #dedede;
+$ui-accordion-content-box-shadow:0px 1px 0px #ccc;
+$ui-accordion-content-padding:1em 0.875em;;
+
+//  Mixin: ui-accordion-navigation($bg-color:$ui-accordion-background,$margin:$ui-accordion-margin,$padding:$ui-accordion-padding,$font-size:$ui-accordion-font-size,$box-shadow:$ui-accordion-box-shadow,$active-border:$accordion-active-border) 
+//@params $bg-color:Specify the background color for the navigation Header element
+//@params $margin: Specify margin of navigation Header element
+//@params $padding: Specify padding of navigation Header element 
+//@params $font-size:Specify font-size of navigation Header element 
+//@params $box-shadow:box-shadow when Accordion is not active
+//@params $active-border: border size,type and color when accordion in active
+
+@mixin ui-accordion-navigation($bg-color:$ui-accordion-background,$margin:$ui-accordion-margin,$padding:$ui-accordion-padding,$font-size:$ui-accordion-font-size,$box-shadow:$ui-accordion-box-shadow,$active-border:$accordion-active-border){
+      .ui-accordion{
+            .ui-accordion-header {
+              display: block;
+              cursor: pointer;
+              position: relative;
+              margin: $margin;
+              padding: $padding;
+              min-height: 0; // support IE7
+              font-weight: $ui-accordion-font-weight;
+              //font-size: $font-size;
+              border-top: 1px solid $macysGrey5;
+              box-shadow:$box-shadow;
+              background-color:$bg-color;
+
+              span {
+                display: inline-block;
+                vertical-align: middle;
+              }
+
+              &.ui-state-active {
+                border-top: $active-border;
+                border-bottom: none;
+                box-shadow:none;
+              }
+              .ui-icon {
+              float: right;
+              margin-top: 6px;
+              margin-right: 2px;
+              }
+            }
+    }
+         
+  
+}
+
+//  Mixin: ui-accordion-content($conent-border:$ui-accordion-border,$box-shadow:$ui-accordion-content-box-shadow,$padding:$ui-accordion-content-padding)
+//@params $conent-border:Border type,size and color of expanded section of accordion
+//@params $padding: Specify padding of expanded section of accordion
+//@params $box-shadow:box-shadow around expanded section of accordion
+@mixin ui-accordion-content($conent-border:$ui-accordion-border,$box-shadow:$ui-accordion-content-box-shadow,$padding:$ui-accordion-content-padding){
+    .ui-accordion{
+     .ui-accordion-content {
+              box-shadow: $box-shadow;
+              padding: $padding;
+              &.no-division {
+                border-top: 0;
+              }
+      }
+    }  
+}
+
+
+
+

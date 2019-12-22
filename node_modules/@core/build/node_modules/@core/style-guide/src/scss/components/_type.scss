@@ -1,0 +1,16 @@
+//1. First include variable overrides --
+//line 53
+$anchor-font-color: #333  !default;
+$anchor-font-color-hover: darken(#333, 5%) !default;
+
+
+
+//2. Then import the Foundation file you're updating --
+@import "~@core/vendor/scss/foundation-4.3.2/components/type";
+
+
+
+//3. Lastly include your override to the foundation component such as mixin --
+
+//line 394
+ a[href]:after { content: none; }

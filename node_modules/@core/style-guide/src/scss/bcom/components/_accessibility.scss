@@ -1,0 +1,29 @@
+// retiring .hidden-for-small class and using HTML5 hidden attribute directly in markup.
+// Browser will automatically apply display:none to your html element with this attribute.
+
+// Make sure that the text of the button is descriptive.
+// If for some reason, your button contains no readable text (for example, just a symbol or icon),
+// add screen reader-only text to the button to clarify its purpose.
+// The symbol or icon should be wrapped in an element with the attribute aria-hidden="true",
+// to prevent screen readers from trying to pronounce the symbol.
+
+
+// Screen reader visibility classes
+// Use the .show-for-sr class to define screen reader-only text.
+// Need a "hide-for-sr" class? Add aria-hidden='true' to the element
+
+.show-for-sr {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+body *:focus {
+    outline: rem-calc(3) solid $bloomiesBlueOutline;
+}

@@ -1,0 +1,59 @@
+//1. First include variable overrides --
+$row-width: em-calc(100%) !default;
+$column-gutter: em-calc(1) !default;
+$total-columns: 16 !default;
+
+
+//2. Then import the Foundation file you're updating --
+@import "~@core/vendor/scss/foundation-4.3.2/components/grid-5";
+
+
+
+//3. Lastly include your override to the foundation component such as mixin --
+@mixin grid-row($behavior: false) {
+
+  // use @include grid-row(nest); to include a nested row
+  @if $behavior == nest {
+    margin-#{$default-float}: -($column-gutter/2);
+    margin-#{$opposite-direction}: -($column-gutter/2);
+    max-width: none;
+    width: auto;
+  }
+
+  // use @include grid-row(collapse); to collapsed a container row margins
+  @else if $behavior == collapse {
+    margin-#{$default-float}: 0;
+    margin-#{$opposite-direction}: 0;
+    max-width: $row-width;
+    width: 100%;
+  }
+
+  // use @include grid-row(nest-collapse); to collapse outer margins on a nested row
+  @else if $behavior == nest-collapse {
+    margin-#{$default-float}: 0;
+    margin-#{$opposite-direction}: 0;
+    max-width: none;
+    width: auto;
+  }
+
+  // use @include grid-row; to use a container row
+  @else {
+    margin-#{$default-float}: auto;
+    margin-#{$opposite-direction}: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: $row-width;
+    width: 100%;
+  }
+
+  @include clearfix;
+}
+
+// fix registry margin-top and margin-bottom:
+@if $include-html-grid-classes != false {
+
+  .row .row {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

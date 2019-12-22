@@ -1,0 +1,118 @@
+<div id="boots-desktop" class="desktop-only desktop-margin-top row">
+    <div id="boots-hero-desktop" class="large-12 columns">
+        <div id="boots-hero-text">
+            <h2 class="shoes-section-header boots-hero-header">
+                ALPINE BOOTS
+            </h2>
+            <p class="shoes-header-text boots-hero-text">
+                When the road gets tough, the</br/>tough reach for rugged traction.
+            </p>
+            <a href="{{ENV_HOSTNAME}}/shop/alpine-boots?id=208653" data-cm="alpineboots_shopnow">
+                <div class="desktop-shoe-shop boots-desktop-button">
+                    <p class="button-text">SHOP NOW</p>
+                </div>
+            </a>
+        </div>
+        <div id="boots-copy">
+            <p class="how-to-wear boots-wear-it">HOW TO WEAR IT:</p>
+            <p class="section-copy boots-section-copy">Complete your lumberjack look with jeans, a unique flannel &amp; a shawl-collar sweater. Beard, optional.</p>
+        </div>
+
+    </div>
+
+	<div id="ProductCarousel">
+		<div id="gridWrapper">
+		<!-- Horizontal Carousel Example Template (htemp.hbs)-->
+			<div id="horizontal-holder9">
+				<div class="componentCarousel horizontal">
+					<div class="table-row">
+						<div class="table-cell">
+						    <button disabled="true" class="m-carousel-button prev" aria-label="scroll carousel left">
+	                            <span class="icon-ui-chevron-left-bk-huge"></span>
+	                        </button>
+						</div>
+						<div class="table-cell">
+							<div class="carouselWrapper">
+								<div class="scroller">
+                                    <ul class="carousel" tabindex="0" aria-label="carousel">
+                                        {{#each apiData}} {{#ifCond this.product.id '===' 4650591}}
+                                        <li class="productThumbnailItem">
+                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+                                        </li>
+                                        {{/ifCond}} {{#ifCond this.product.id '===' 6586984}}
+                                        <li class="productThumbnailItem">
+                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+                                        </li>
+                                        {{/ifCond}} {{#ifCond this.product.id '===' 6584074}}
+                                        <li class="productThumbnailItem">
+                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+                                        </li>
+                                        {{/ifCond}} {{#ifCond this.product.id '===' 6797740}}
+                                        <li class="productThumbnailItem">
+                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+                                        </li>
+                                        {{/ifCond}} {{#ifCond this.product.id '===' 5470093}}
+                                        <li class="productThumbnailItem">
+                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+                                        </li>
+                                        {{/ifCond}} {{#ifCond this.product.id '===' 7003607}}
+                                        <li class="productThumbnailItem">
+                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+                                        </li>
+                                        {{/ifCond}} {{#ifCond this.product.id '===' 6701818}}
+                                        <li class="productThumbnailItem">
+                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+                                        </li>
+                                        {{/ifCond}} {{#ifCond this.product.id '===' 6593008}}
+                                        <li class="productThumbnailItem">
+                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+                                        </li>
+                                        {{/ifCond}} {{/each}}
+                                    </ul>
+                                </div>
+							</div>
+							<div class="table-cell">
+		                        <button disabled="true" class="m-carousel-button next" aria-label="scroll carousel right">
+		                            <span class="icon-ui-chevron-right-bk-huge"></span>
+		                        </button>
+	                    	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+<div class="mobile-only small-12 columns">
+    <div id="boots-hero-mobile" class="small-12 columns">
+        <div id="boots-hero-text">
+            <h2 class="shoes-section-header boots-mobile-header">
+                ALPINE BOOTS
+            </h2>
+
+            <p class="boots-hero-text shoes-header-text">
+                When the road gets tough, the tough reach for rugged traction.
+            </p>
+            <a href="{{ENV_HOSTNAME}}/shop/alpine-boots?id=208653" data-cm="boots_shopnow">
+                <div class="desktop-shoe-shop">
+                    <p class="button-text">SHOP NOW</p>
+                </div>
+            </a>
+        </div>
+        <div id="chukka-copy">
+            <p class="how-to-wear">HOW TO WEAR IT:</p>
+            <p class="shoes-header-text">Complete your lumberjack look with jeans, a unique flannel &amp; a shawl-collar sweater. Beard, optional.</p>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,18 @@
+//icon size constants
+$icon-size-full: 40px;
+$icon-size-huge: 30px;
+$icon-size-large: 25px;
+$icon-size-medium: 20px;
+$icon-size-small: 15px;
+$icon-size-tiny: 8px;
+
+//Set the icon and size if size is not 'default' (free size)
+@mixin svg-icon($icon, $size: null ) {
+  background: $icon no-repeat;
+
+  @if $size != null {
+    height: $size;
+    width: $size;
+    background-size: $size $size;
+  }
+}

@@ -1,0 +1,11 @@
+@mixin bloomies-form-input-error(
+  $background-lighten: 10%
+) {
+  .is-invalid-input {
+    border-color: $input-border-invalid-color;
+
+    @at-root select#{&} {
+      @include select-icon-style();
+    }
+  }
+}

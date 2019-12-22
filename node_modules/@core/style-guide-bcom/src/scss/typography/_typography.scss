@@ -1,0 +1,11 @@
+@import 'base';
+@import 'helpers';
+@import 'alignment';
+@import 'print';
+
+@mixin bloomies-typography {
+  @include bloomies-typography-base;
+  @include bloomies-typography-helpers;
+  @include bloomies-text-alignment;
+  @include bloomies-print-styles;
+}

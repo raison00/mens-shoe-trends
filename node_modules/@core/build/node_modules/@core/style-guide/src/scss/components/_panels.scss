@@ -1,0 +1,49 @@
+//1. First include variable overrides --
+
+// We use these to set default inner padding and bottom margin
+$panel-margin-bottom: emCalc(20px) !default;
+$panel-padding: emCalc(20px) !default;
+
+
+//2. Then import the Foundation file you're updating --
+@import "~@core/vendor/scss/foundation-4.3.2/components/panels";
+
+
+
+//3. Lastly include your override to the foundation component such as mixin --
+//
+// Panel Mixins
+//
+
+// We use this mixin to create panels.
+@mixin panel($bg:$panel-bg, $padding:$panel-padding, $adjust:$panel-header-adjust) {
+
+  @if $bg {
+
+    @if $adjust {
+      // reset header line-heights for panels
+      h1,h2,h3,h4,h5,h6 {
+        line-height: 1; margin-bottom: emCalc(20px) / 2;
+        &.subheader { line-height: 1.4; }
+      }
+    }
+  }
+}
+
+// Only include these classes if the option exists
+@if $include-html-panel-classes != false {
+
+  /* Panels */
+  .panel { @include panel($padding: 0);
+
+    &.callout {
+      a{ color: inherit; }
+    }
+  }
+}
+
+.panel {
+  padding: 0;
+}
+
+

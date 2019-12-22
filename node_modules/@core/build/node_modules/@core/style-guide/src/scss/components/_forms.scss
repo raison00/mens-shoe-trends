@@ -1,0 +1,848 @@
+//1. First include variable overrides --
+
+//
+// Form Variables
+//
+$include-html-form-classes: $include-html-classes !default;
+$include-html-form-error-classes: $include-html-form-classes !default;
+
+// We use this to set the base for lots of form spacing and positioning styles
+$form-spacing: 1em !default; //emCalc(16)
+
+// We use these to style the labels in different ways
+$form-label-pointer: default !default;
+$form-label-font-family: Helvetica, Arial, sans-serif;
+$form-label-font-size: 1em !default;
+$form-label-font-weight: bold !default;
+$form-label-font-color: $macysGrey1 !default;
+$form-label-margin: 0 !default;
+$form-label-optional-font-weight: bold !default;
+$form-label-optional-line-height: normal !default;
+$form-label-optional-margin: 0 !default;
+$form-label-disabled-font-color: $global-disabled-font-color !default;
+$input-font-family: inherit !default;
+$input-font-color: $macysGrey1 !default;
+$input-focus-font-color: $macysBlack !default;
+$input-font-size: 1em !default;
+$input-font-weight: normal !default;
+$input-bg-color: #fff !default;  // not used
+$input-focus-bg-color: darken(#fff, 2%) !default;  //not used
+$input-border-color: $macysGrey3 !default;
+$input-focus-border-color: $macysBlack !default;
+$input-border-style: solid !default;
+$input-border-width: 1px !default;
+$input-disabled-bg: #ddd !default;  //not used
+$input-disabled-font-color: $global-disabled-font-color !default;
+$input-disabled-border-color: $global-disabled-border-color !default;
+$input-box-shadow: none !default;//inset 0 1px 2px rgba(0,0,0,0.1);
+$input-include-glowing-effect: false !default;
+
+// we use these to style the dropdown select menu
+$form-select-width: 100% !default;
+$form-select-font-family: Helvetica, Arial, sans-serif;
+$form-select-font-size: 0.875em;
+$form-select-font-weight: normal;
+$form-select-font-color: $macysGrey1;
+$form-select-color: $macysGrey5 !default; //border color
+$form-select-background-color: $macysGrey6;
+$form-select-focus-background-color: $macysGrey5;
+$form-select-margin: 0.5rem 0 1.5rem 0;
+$form-select-padding: 0.75rem;
+
+
+// We use these to style the fieldset border and spacing.
+$fieldset-border-style: none !default;
+$fieldset-border-width: 1px !default;
+$fieldset-border-color: #ddd !default;
+$fieldset-padding: emCalc(20px) !default;
+$fieldset-margin: emCalc(18px) 0 !default;
+
+// We use these to style the legends when you use them (for Fieldsets)
+$legend-bg: #fff !default;
+$legend-font-weight: bold !default;
+$legend-font-family: $body-font-family;
+$legend-font-size: 1.5em;  // 24px
+$legend-padding: 0 emCalc(3px) !default;
+$legend-font-color: $macysRed;
+
+// We use these to style the error states for inputs and labels  //not used
+$input-error-message-padding: emCalc(6px) 0 !default;
+$input-error-message-top: -1em !default;
+$input-error-message-font-size: emCalc(14px) !default;
+$input-error-message-font-weight: normal;
+$input-error-message-font-color: $macysError;
+$input-error-message-font-color-alt: $macysRed;
+
+// We use these to style the warning states for inputs and labels  // not used
+$input-warning-message-padding: emCalc(6px) emCalc(4px) !default;
+$input-warning-message-top: -($form-spacing) - emCalc(5px) !default;
+$input-warning-message-font-size: emCalc(12px) !default;
+$input-warning-message-font-weight: bold !default;
+$input-warning-message-font-color: $macysWhite !default;
+$input-warning-message-font-color-alt: $macysGrey1 !default;
+
+
+
+//2. Then import the Foundation file you're updating --
+@import "~@core/vendor/scss/foundation-4.3.2/components/forms";
+
+
+
+//3. Lastly include your override to the foundation component such as mixin --
+
+//
+// Form Mixins
+//
+// We use this mixin to give all basic form elements their style
+@mixin form-element() {
+  //background-color: $input-bg-color;
+  font-family: $input-font-family;
+  border: $input-border-width $input-border-style $input-border-color;
+  color: $input-font-color;
+  display: block;
+  font-size: $input-font-size;
+  font-weight: $input-font-weight;
+  margin: 0.5rem 0 1.5rem 0;//0.250em 0 1.250em 0;
+  padding: 0.75rem;//0.625em;
+  width: 100%;  // range: 80px to 450px
+  height: 2.8rem;
+  @include box-sizing(border-box);
+  // Disabled background input background color
+  &[disabled] {
+    background-color: transparent;
+    border: $input-border-width $input-border-style $input-disabled-border-color;
+    color: $input-disabled-font-color;
+  }
+  &:focus{
+    border-color: $input-focus-border-color;
+    color: $input-focus-font-color;
+    outline: 0;
+    background: #fafafa; // in place of outline for visually impaired per http://outlinenone.com/
+  }
+}
+
+// We use this mixin to create form labels
+@mixin form-label($alignment:false, $base-style:true) {
+
+  // Control whether or not the base styles come through.
+  @if $base-style {
+    font-family: $form-label-font-family;
+    font-size: $form-label-font-size;
+    color: $form-label-font-color;
+    cursor: $form-label-pointer;
+    display: block;
+    font-weight: $form-label-font-weight;
+    margin: $form-label-margin;
+    text-decoration: none;
+
+    &.disabled {
+      color: $form-label-disabled-font-color;
+    }
+  }
+
+  // Alignment options
+  @if $alignment == right {
+    float: none;
+    text-align: right;
+  }
+  @else if $alignment == inline {
+
+    @media #{$screen} {
+      padding: 0px;//0px;
+      margin: 0.75em;//0.5em 0;
+    }
+    @media #{$small} {
+      padding: 1.25em 0;//0.75em 0;
+      margin: 0;
+    }
+    @media #{$medium} {
+      padding: 1.25em 0;//0.75em 0;
+      margin: 0;
+    }
+    @media #{$large} {
+      padding: 1.25em 0;//0.75em 0;
+      margin: 0;//0;
+    }
+  }
+}
+
+// We use this mixin to create optional form labels
+@mixin form-label-optional(){
+  font-weight: $form-label-optional-font-weight;
+  line-height: $form-label-optional-line-height;
+  margin: $form-label-optional-margin;
+}
+
+
+
+@import "compass/css3/appearance";
+@import "compass/css3/border-radius";
+// We use this mixin to create select
+@mixin form-select(){
+  @include appearance(none);
+  @include border-radius(3px);
+  width: $form-select-width;
+  height: 2.8rem;
+  font-family: $form-select-font-family;
+  font-size: $form-select-font-size;
+  font-weight: $form-select-font-weight;
+  text-transform: none;
+  text-decoration: none;
+  color: $form-select-font-color;
+  margin: $form-select-margin;
+  padding: $form-select-padding;
+  border: 1px solid $form-select-color;
+  // firefox select fix
+  text-indent: 1px;
+  text-overflow: "";
+  // end firefox select fix
+  &:focus{
+    outline:none;
+        background-color: $form-select-focus-background-color;
+  }
+}
+// We use this mixin to create postfix/prefix form Labels
+@mixin prefix-postfix-base {
+  display: block;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-style: $input-prefix-border-type;
+  border-width: $input-prefix-border-size;
+  overflow: $input-prefix-overflow;
+  font-size: $form-label-font-size;
+  height: ($form-label-font-size + ($form-spacing * 1.5) - emCalc(1px));
+  line-height: ($form-label-font-size + ($form-spacing * 1.5) - emCalc(1px));
+}
+
+// We use this mixin to create prefix label styles
+@mixin prefix($bg:$input-prefix-bg,$is-button:false) {
+
+  @if $bg {
+    $bg-lightness: lightness($bg);
+    background: $bg;
+    border-color: darken($bg, 10%);
+    border-#{$opposite-direction}: none;
+
+    // Control the font color based on background brightness
+    @if $bg-lightness > 70% or $bg == yellow { color: $input-prefix-font-color; }
+    @else { color: $input-prefix-font-color-alt; }
+  }
+
+  @if $is-button {
+    padding-#{$default-float}: 0;
+    padding-#{$opposite-direction}: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
+    line-height: emCalc(34px);
+  }
+}
+
+// We use this mixin to create postfix label styles
+@mixin postfix($bg:$input-prefix-bg, $is-button:false) {
+
+  @if $bg {
+    $bg-lightness: lightness($bg);
+    background: $bg;
+    border-color: darken($bg, 15%);
+    border-#{$default-float}: none;
+
+    // Control the font color based on background brightness
+    @if $bg-lightness > 70%  or $bg == yellow { color: $input-prefix-font-color; }
+    @else { color: $input-prefix-font-color-alt; }
+  }
+
+  @if $is-button {
+    padding-#{$default-float}: 0;
+    padding-#{$opposite-direction}: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
+    line-height: emCalc(34px);
+  }
+}
+
+// We use this mixin to style fieldsets
+@mixin fieldset {
+  border: $fieldset-border-style $fieldset-border-width $fieldset-border-color;
+  padding: $fieldset-padding;
+  margin: $fieldset-margin;
+
+  // and legend styles
+  legend {
+    font-weight: $legend-font-weight;
+    font-family: $legend-font-family;
+    font-size: $legend-font-size;
+    background: $legend-bg;
+    padding: $legend-padding;
+    text-decoration: none;
+    color: $legend-font-color;
+    margin: 0;
+    margin-#{$default-float}: emCalc(-3px);
+  }
+  h1{
+    font-weight: $legend-font-weight;
+    font-family: $legend-font-family;
+    font-size: $legend-font-size;
+    background: $legend-bg;
+    padding: $legend-padding;
+    text-decoration: none;
+    color: $legend-font-color;
+    margin: 0;
+    margin-#{$default-float}: emCalc(-3px);
+  }
+  .hidelegend{
+    display:none;
+  }
+}
+
+// We use this mixin to control border and background color of error inputs
+@mixin form-error-color($color:$alert-color) {
+  border: $input-border-style $input-border-width $color;
+  background-color: transparent;
+
+  // Go back to normal on focus
+  &:focus {
+    //background: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+  }
+}
+
+// We use this simple mixin to style labels for error inputs
+// Not used for Macys.com (we don't want to style labels for errors)
+// @mixin form-label-error-color($color:$alert-color) { color: $color; }
+
+// We use this mixin to create error message styles
+@mixin form-error-message($bg:$macysWhite) {
+  display: block;
+  padding: $input-error-message-padding;
+  margin-top: -1.5em;
+  margin-bottom: 1.25em;
+  font-size: $input-error-message-font-size;
+  font-weight: $input-error-message-font-weight;
+  line-height: 1.30;
+
+  // We can control the text color based on the brightness of the background.
+  $bg-lightness: lightness($bg);
+  background: $bg;
+  @if $bg-lightness < 70% or $bg == yellow { color: $input-error-message-font-color-alt; }
+  @else { color: $input-error-message-font-color; }
+}
+
+
+// We use this mixin to control border and background color of warning inputs
+@mixin form-warning-color($color:$warning-color) {
+  border: $input-border-style $input-border-width $color;
+  //background-color: rgba($color, 0.1);
+
+  // Go back to normal on focus
+  &:focus {
+    //background: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+  }
+}
+
+
+// We use this mixin to create warning message styles
+@mixin form-warning-message($bg:$warning-color) {
+  display: block;
+  padding: $input-warning-message-padding;
+  margin-top: $input-warning-message-top;
+  margin-bottom: $form-spacing;
+  font-size: $input-warning-message-font-size;
+  font-weight: $input-warning-message-font-weight;
+
+  // We can control the text color based on the brightness of the background.
+  // $bg-lightness: lightness($bg);
+  // background: $bg;
+  // @if $bg-lightness < 70% or $bg == yellow { color: $input-warning-message-font-color; }
+  // @else { color: $input-warning-message-font-color-alt; }
+}
+
+// Only include these classes if the variable is true, otherwise they'll be left out.
+
+@if $include-html-form-classes != false {
+  input[type="file"],
+  input[type="checkbox"],
+  input[type="radio"],
+  select {
+    margin: 0;
+  }
+  label{
+    display: inline-block;
+    margin: 0;
+  }
+  input[type="text"],
+  input[type="textarea"]{
+    display: inline-block;
+    height: inherit;
+    margin: 0;
+  }
+
+  input[type="file"],
+  input[type="checkbox"],
+  input[type="radio"] {
+    + label {
+      display: inline-block;
+
+    }
+  }
+    /* Standard Forms */
+  form.standard-form { margin: 0 0 $form-spacing; @include form-row-base; }
+
+  /* Using forms within rows, we need to set some defaults */
+  form.standard-form .row { @include form-row-base; }
+
+  //adding custom class to forms
+  .standard-form {
+
+    /* Label Styles */
+    label { @include form-label;
+    &.right { @include form-label(right,false); }
+    &.inline { @include form-label(inline,false); }
+    }
+
+    /*Optional Label Styles*/
+    label.optional, .optional label {
+      @include form-label-optional;
+      span{
+        font-weight: normal;
+        text-transform: lowercase;
+      }
+    }
+
+    label .checkbox {
+      @include form-label-optional;
+    }
+
+    label .radiobutton {
+      @include form-label-optional;
+    }
+
+    /* Attach elements to the beginning or end of an input */
+    .prefix,
+    .postfix { @include prefix-postfix-base; }
+
+    /* Adjust padding, alignment and radius if pre/post element is a button */
+    .postfix.button { @include button-size(false,false,false); @include postfix(false,true); }
+    .prefix.button { @include button-size(false,false,false); @include prefix(false,true); }
+
+    .prefix.button.radius { @include radius(0); @include side-radius(left, $button-radius); }
+    .postfix.button.radius { @include radius(0); @include side-radius(right, $button-radius); }
+    .prefix.button.round { @include radius(0); @include side-radius(left, $button-round); }
+    .postfix.button.round { @include radius(0); @include side-radius(right, $button-round); }
+
+    /* Separate prefix and postfix styles when on span so buttons keep their own */
+    span.prefix { @include prefix();
+    &.radius { @include radius(0); @include side-radius(left, $global-radius); }
+    }
+    span.postfix { @include postfix();
+    &.radius { @include radius(0); @include side-radius(right, $global-radius); }
+    }
+
+    /* Input groups will automatically style first and last elements of the group */
+    .input-group {
+      &.radius {
+        &>*:first-child,  &>*:first-child * {
+          @include side-radius($default-float, $global-radius);
+        }
+        &>*:last-child, &>*:last-child * {
+          @include side-radius($opposite-direction, $global-radius);
+        }
+      }
+      &.round {
+        &>*:first-child,  &>*:first-child * {
+          @include side-radius($default-float, $button-round);
+        }
+        &>*:last-child, &>*:last-child * {
+          @include side-radius($opposite-direction, $button-round);
+        }
+      }
+    }
+
+    /*Span elements which will be used as text help*/
+    span.text-help {
+      margin: emCalc(-12px) 0 emCalc(17px) 0;
+    }
+    /* We use this to get basic styling on all basic form elements */
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="month"],
+    input[type="week"],
+    input[type="email"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="time"],
+    input[type="url"],
+    textarea {
+      @include form-element;
+    }
+
+    /* Adjust margin for form elements below */
+    input[type="file"],
+    input[type="checkbox"],
+    input[type="radio"] {
+      margin: $form-spacing 0 $form-spacing 0.4em;
+      //padding: .5em;
+      //background-image:url("/images/icons/icons-sprite.svg");
+      //background-position:0 -660px;
+      //background-repeat:no-repeat;*/
+      //border: 1px solid $macysBlack;
+      width: 1.5em;
+      height: 1em;
+      // -webkit-appearance: none;
+      // -moz-appearance: none;
+      // appearance: none;
+      + label {
+        display: inline-block;
+        font-weight: normal;
+      }
+    }
+
+    /* Normalize file input width */
+    input[type="file"] {
+      width:100%;
+    }
+
+    /* We add basic fieldset styling */
+    fieldset {
+      @include fieldset;
+    }
+
+    /* fieldset for radio butons*/
+
+
+    fieldset.accessibilty_radio {
+        padding:0;
+        margin:0;
+
+        legend{
+          font-family: $body-font-family;
+          font-size: 0.875em;
+          color: #333;
+          cursor: default;
+          display: block;
+          font-weight: bold;
+          margin: 0;
+          text-decoration: none;
+          line-height: 46px;
+        }
+
+        label{
+          display: inline-block;
+          font-weight: normal;
+          font-size:100%;
+        }
+    }
+
+    @if $include-html-form-error-classes != false {
+      /* Error Handling */
+      .error input,
+      input.error,
+      .error textarea,
+      textarea.error,
+      .error select,
+      select.error {
+        @include form-error-color;
+      }
+
+      /*    Commenting this as for MCOM we are setting standard of not highlighting labels */
+      /*  .error label,
+        label.error { @include form-label-error-color; }
+      */
+
+      .error small,
+      small.error,
+      small.error_msg {
+        @include form-error-message;
+      }
+
+      /* error-icon related classes */
+      .error-icon{
+        width: emCalc(17px);
+        height: emCalc(24px);
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+      .error .error-icon{
+        //background-image: url();
+      }
+
+      /* Warning Handling */
+      .warning input,
+      input.warning,
+      .warning textarea,
+      textarea.warning,
+      .warning select,
+      select.warning     {
+        @include form-warning-color;
+      }
+
+      .warning {
+        //@include form-warning-message;
+      }
+    }
+
+    /* Disclaimers */
+    .disclaimer {
+      margin: -0.625em 0 0.625em 0;
+      font-family: $body-font-family;
+      font-weight: normal;
+      font-size: 0.750em;
+      color: $macysBlack;
+
+      &.disabled {
+        color: $form-label-disabled-font-color;
+      }
+    }
+
+    //
+    // Global resets for forms
+    //
+
+    // Make sure textarea takes on height automatically
+    textarea {
+      height: auto;
+      min-height: 200px;
+      width: 250px;
+      min-width: 80px;
+      padding: 1em;
+    }
+
+    // Make select elements 100% width by default
+    select {
+      @include form-select;
+    }
+
+    button, .button{
+      //margin: em-calc(0 0 20px);
+      margin: 2em 0 3em 0;
+    }
+  }
+}
+
+@import "../encodedIcons/dropdown_active";
+select{
+    @extend .dropdown_active-full;
+    background: $form-select-background-color 100%  center;
+}
+.svg select{
+    @extend .dropdown_active-full;
+    background: 100% center;
+}
+.svg select.selectQty, select.selectQty{
+  background: none;  //for Qty dropdown in bag, use browser default dropdown arrow
+}
+select::ms-expand{
+  display: none;   //IE10 and above
+}
+.firefox select{
+    //background-position:-100px;
+    border: 1px solid #999;
+}
+
+
+
+
+
+
+
+
+
+// These are the comments for DSS
+// By running `grunt dss`, these get parsed into a json file,
+// which is then imported to ui-standards.herokuapp.com
+// ======================================================================================
+
+/**
+  * @name Standard Form - Inline Input Fields (Deprecated. Please use stacked inpute fields)
+  * @section Forms
+  * @sectionIntro Input fields allow user to submit information to the system. Inline Input field styles provided for reference only.  UX is moving in the direction of using stacked forms.  Forms should also NOT be in modal overlays.  New Creative comps should use <a href="http://ui-styleguide.macys.com/#Standard Form - Stacked Input Fields">stacked input fields</a>. All form input components are included in <code>macys-base.css</code>.
+  * @markup
+  * <form class="standard-form">
+  * <div class="row">
+  *  <div class="small-16 large-8 columns">
+  *   <div class="row">
+  *    <div class="small-4 columns"><label for="creditCardFirstName" class="right inline">Input Label</label></div>
+  *    <div class="small-10 columns">
+  *      <input type="text" id="creditCardFirstName" name="billingAddress.firstName" value="" aria-required="true">
+  *    </div>
+  *    <div class="small-2 columns"></div>
+  *  </div>
+  * </div>
+  *  <div class="small-16 large-8 columns">
+  *   <div class="row">
+  *    <div class="small-4 columns"><label for="creditCardFirstName" class="optional right inline">Input Label <span>(Optional)</span></label></div>
+  *    <div class="small-10 columns">
+  *      <input type="text" id="creditCardFirstName" name="billingAddress.firstName" value="" aria-required="false">
+  *    </div>
+  *    <div class="small-2 columns"></div>
+  *  </div>
+  * </div>
+  * </div>
+  * <div class="row">
+  *  <div class="small-16 large-8 columns">
+  *   <div class="row">
+  *    <div class="small-4 columns"><label for="creditCardFirstName" class="disabled right inline">Input Label</label></div>
+  *    <div class="small-10 columns">
+  *      <input type="text" id="creditCardFirstName" name="billingAddress.firstName" value="" disabled="disabled" aria-required="true" aria-disabled="true">
+  *    </div>
+  *    <div class="small-2 columns"></div>
+  *  </div>
+  * </div>
+  * </div>
+  * </form>
+  */
+
+
+/**
+  * @name Standard Form - Stacked Input Fields
+  * @section Forms
+  * @sectionIntro Stacked input fields are preferred over inline input fields for all new designs. This file is included in macys-base.css. <p><strong>Accessibility:</strong> Associate a form label with a text input field by defining the value of the label's form attribute with the same value of the text input field's id attribute. If the input field is a requited field add <code>aria-required="true"</code>.</p>
+  * @markup
+  * <form class="standard-form">
+  * <div class="row">
+  *  <div class="small-2 columns">&nbsp;</div>
+  *  <div class="small-12 columns">
+  *   <label for="creditCadFirstName">Input Label </label>
+  *   <input type="text" id="creditCardFirstName" name="billingAddress.firstName" value="" aria-required="true">
+  *  </div>
+  *  <div class="small-2 columns">&nbsp;</div>
+  * </div>
+  * <div class="row">
+  *  <div class="small-2 columns">&nbsp;</div>
+  *  <div class="small-12 columns">
+  *   <label for="creditCadFirstName" class="optional">Input Label <span>(Optional)</span></label>
+  *   <input type="text" id="creditCardFirstName" name="billingAddress.firstName" value="" aria-required="false">
+  *  </div>
+  *  <div class="small-2 columns">&nbsp;</div>
+  * </div>
+  * <div class="row">
+  *  <div class="small-2 columns">&nbsp;</div>
+  *  <div class="small-12 columns">
+  *    <label for="creditCadFirstName" class="disabled">Input Label </label>
+  *    <input type="text" id="creditCardFirstName" name="billingAddress.firstName" value="" disabled="disabled" aria-required="true" aria-disabled="true">
+  *  </div>
+  *  <div class="small-2 columns">&nbsp;</div>
+  * </div>
+  * </form>
+  */
+
+/**
+  * @section Forms
+  * @name Input Error State
+  * @description Form error state is triggered by script only, not by user.  Instructional message shown on top of form, with error icon appearing next to input field in question.
+  * @accessibility Instructional error messages shown on top of the form should be hyperlinked to give focus to the form element that is triggering the error. Users can easily make a correction to that specific element.
+  * @markup
+  * <form class="standard-form">
+  * <div class="row">
+  * <div class="small-16 large-8 columns">
+  *   <label for="creditCadFirstName">Input Label</label>
+  *   <input class="error" type="text" id="creditCardFirstName" name="billingAddress.firstName" value="" aria-required="true">
+  * </div>
+  * <div class="small-16 large-8 columns">&nbsp</div>
+  * </div>
+  * </form>
+  */
+
+/**
+  * @section Forms
+  * @name Input Warning State
+  * @description Form input warming message.  User is able to move ahead without correction.
+  * @markup
+  * <form class="standard-form">
+  * <div class="row">
+  * <div class="small-8 columns">
+  *   <label for="creditCadFirstName">Input Label</label>
+  *   <input class="warning" type="text" id="creditCardFirstName" name="billingAddress.firstName" value="" aria-required="true">
+  * </div>
+  * <div class="small-8 columns">&nbsp</div>
+  * </div>
+  * </form>
+  */
+
+/**
+  * @section Forms
+  * @name Textarea Comment Field
+  * @description Textarea for comments
+  * @markup
+  * <form class="standard-form">
+  * <div class="row">
+  * <div class="small-1 columns">&nbsp</div>
+  * <div class="small-5 columns">
+  * <div>
+  * <label for="userInquiry1">Textarea Label</label>
+  * </div>
+  * <div>
+  * <textarea type="text" id="userInquiry1" name="userComment" role="textbox" aria-multiline="true" aria-required="true"></textarea>
+  * </div>
+  * <div class="disclaimer">Max 500 characters</div>
+  * <div>
+  * <button class="small left"> Submit </button>
+  * </div>
+  * </div>
+  * <div class="small-5 columns">
+  * <div>
+  * <label for="userInquiry2">Textarea Label (warning notification)</label>
+  * </div>
+  * <div>
+  * <textarea class="warning" type="text" id="userInquiry2" name="userComment" role="textbox" aria-multiline="true" aria-required="true"></textarea>
+  * </div>
+  * <div class="disclaimer">Max 500 characters</div>
+  * <div>
+  * <button class="small left"> Submit </button>
+  * </div>
+  * </div>
+  * <div class="small-5 columns">
+  * <div>
+  * <label for="userInquiry3">Textarea Label (error notification)</label>
+  * </div>
+  * <div>
+  * <textarea class="error" type="text" id="userInquiry3" name="userComment" role="textbox" aria-multiline="true" aria-required="true"></textarea>
+  * </div>
+  * <div class="disclaimer">Max 500 characters</div>
+  * <div>
+  * <button class="small left"> Submit </button>
+  * </div>
+  * </div>
+  * </form>
+  */
+
+
+
+
+  // @section Forms
+  // @name Dropdown Select Menu
+  // @description Used to select from a predetermined set of options, limited to form.standard-form container.
+  // @markup
+  // <div class="row">
+  // <div class="small-2 columns">&nbsp;</div>
+  // <div class="small-3 columns">
+  // <form class="standard-form">
+  //    <select id="unique-id">
+  //      <option value="ORIGINAL" selected>Featured Items</option>
+  //      <option value="PRICE_LOW_TO_HIGH">Price: Low to High</option>
+  //      <option value="PRICE_HIGH_TO_LOW">Price: High to Low</option>
+  //      <option value="TOP_RATED">Customer's Top Rated</option>
+  //      <option value="BEST_SELLERS">Best Sellers</option>
+  //      <option value="NEW_ITEMS">New Arrivals</option>
+  //    </select>
+  // </form>
+  // </div>
+  // <div class="small-11 columns">&nbsp;</div>
+  //  </div>
+
+ // @section Forms
+ // @disableCodeSample
+ // @ux
+ // Additional UX Guidelines
+ // @markup
+ // Input fields allow user to submit information to the system. For details, see <strong><a class="button small secondary" href="http://uxmacys/standards/inputfield">input field design documentation</a></strong>

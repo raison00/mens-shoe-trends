@@ -1,0 +1,151 @@
+/*
+@section Components 
+@name Tabs
+@description Horizonal navigation component
+@api
+	available configuration options passed in as 'config' argument
+		options
+			useSideBorders: Boolean Whether or not to use borders on first and last tab, defaults to false
+			useFoundation: Boolean whether or not to use foundation classes to distribute widths of tabs, defaults to true. Example use case for third party sites not using foundation, would set useFoundation: false
+			items:Array of objects to dynamically generate tabs, format is [{value:"String Value", title:"String Value"},...]
+		data
+			returned as-is, as second argument of callback function on each tab click, see below callback description
+		items
+			Array of tab items to be rendered; in format [{id:'foo', title:'Foo'},...]
+	methods
+		new Tabs(selector, [config,] callback(id, data)
+			selector: Required String|Object - JQuery selector ref or JQuery object
+			config: Optional object see above 'available configuration options'
+			callback: Required Will be fired on each tab click, function(value, data){...}
+		       		value: String Value of selected Tab
+				data: Optional Object, pass through object from options.data argument
+		selectTabByIndex(index) Will select tab and show as highlighted
+			index - zero based index of tabs
+		getSelectedValue()
+			returns value of currently selected tab
+@notes See docco for full documentation confluence/javascript/	
+@markup
+  <script>
+  	require(['mcomjs/components/Tabs'], function(Tabs){
+		var out = "<b>ID was clicked!</b>";
+		var obj = {options:{useSideBorders:true}, data:{targetSelector:"#output_1"}};	
+		var tabs = new Tabs("#static",obj, function(id, data){
+			$(data.targetSelector).html(out.replace("ID",id));
+		});
+		var obj2 = JSON.parse(JSON.stringify(obj));
+		obj2.data.targetSelector = "#output_2";
+		obj2.items = [{value:"tall", title:"Tall"},{value:"petites2", title:"Petites 2"},{value:"plus2", title:"Plus 2",selected:true},{value:"women2",title:"Women 2"},{value:"juniors2",title:"Juniors 2"},{value:"plus",title:"Plus"},{value:"petites",title:"Petites"}];
+		var tabs2 = new Tabs("#dynamic",obj2,function(id,data){
+			$(data.targetSelector).html(out.replace("ID",id));
+		});
+		var obj3 = JSON.parse(JSON.stringify(obj2));
+		obj3.options.useSideBorders = false;	
+		obj3.data.targetSelector = "#output_3";	
+		
+		var tabs3 = new Tabs("#dynamic_2",obj3,function(id,data){
+			$(data.targetSelector).html(out.replace("ID",id));
+		});
+	
+		var tabs4 = new Tabs("#static_2",function(id,data){
+			$("#output_4").html(out.replace("ID",id));
+		});
+		
+		var tabs5 = new Tabs("#dynamic_x",{useFoundation:false,useSideBorders:true,items:[{value:"tabOne",title:"Tab One"},{value:"tabTwo",title:"Tab Two"},{value:"tabThree",title:"Tab Three"}]},function(value,data){
+			$("#output_x").html(out.replace("ID",value));
+		});
+	});
+  </script>
+  <div class="row">
+  	<div class="large-1 columns">&nbsp;</div>
+	<div class="large-14 columns">
+		<h4 class="sg">Static(server-side rendered) Tabs</h4>
+		<ul id="static" class="tabs">
+			<li data-value="tall" class="selected"><a href="#">Tall</a></li>
+			<li data-value="petites2"><a href="#">Petites 2</a></li>
+			<li data-value="plus2"><a href="#">Plus 2</a></li>
+			<li data-value="women2"><a href="#">Women 2</a></li>
+			<li data-value="juniors2"><a href="#">Juniors 2</a></li>
+			<li data-value="plus"><a href="#">Plus</a></li>
+			<li data-value="petites"><a href="#">Petites</a></li>
+		</ul>
+   		<div id="output_1"></div>
+	</div>
+	<div class="large-1 columns">&nbsp;</div>
+  </div>
+  <div class="row">
+  	<div class="large-1 columns">&nbsp;</div>
+	<div class="large-14 columns">
+  		<h4 class="sg">Dynamic Tabs</h4>
+  		<ul id="dynamic" class="tabs"></ul>
+  		<div id="output_2"></div>
+  	</div>
+	<div class="large-1 columns">&nbsp;</div>
+  </div>
+  <div class="row">
+  	<div class="large-1 columns">&nbsp;</div>
+	<div class="large-14 columns">
+  		<h4 class="sg">Dynamic Tabs w/no Side Borders and not using foundation css framework</h4>
+  		<ul id="dynamic_x" class="tabs"></ul>
+  		<div id="output_x"></div>
+  	</div>
+	<div class="large-1 columns">&nbsp;</div>
+  </div>
+  <div class="row">
+  	<div class="large-1 columns">&nbsp;</div>
+	<div class="large-14 columns">
+  		<h4 class="sg">Dynamic Tabs w/no Side Borders</h4>
+  		<ul id="dynamic_2" class="tabs"></ul>
+  		<div id="output_3"></div>
+  	</div>
+	<div class="large-1 columns">&nbsp;</div>
+  </div>
+  <div class="row">
+  	<div class="large-1 columns">&nbsp;</div>
+	<div class="large-14 columns">
+  		<h4 class="sg">Static Tabs w/optional data object</h4>
+  		<ul id="static_2" class="tabs">
+			<li data-value="tall" class="selected"><a href="#">Tall</a></li>
+			<li data-value="petites2"><a href="#">Petites 2</a></li>
+			<li data-value="plus2"><a href="#">Plus 2</a></li>
+			<li data-value="women2"><a href="#">Women 2</a></li>
+			<li data-value="juniors2"><a href="#">Juniors 2</a></li>
+			<li data-value="plus"><a href="#">Plus</a></li>
+			<li data-value="petites"><a href="#">Petites</a></li>
+		</ul>
+  		<div id="output_4"></div>
+  	</div>
+	<div class="large-1 columns">&nbsp;</div>
+  </div>
+*/
+.tabs{
+	margin:0;
+	padding:0;
+	list-style:none;
+	height:32px;
+	width:100%;
+	& > li{
+		float:left;
+		height: 33px;
+		border:1px solid #CCC;
+		border-left:none;
+		overflow:hidden;
+		position:relative;
+		font-size:12px;
+		text-align:center;
+		padding-top: 7px;
+		cursor:pointer;	
+		background-color:#EEE;
+		&.selected{
+			background-color:#FFF;
+			border-bottom:1px solid #FFF;
+			font-weight:bold;
+		}
+		&:last-child{
+			border-right:none;
+		}
+		& > a{
+			text-decoration:none;
+		}
+	}
+}
+

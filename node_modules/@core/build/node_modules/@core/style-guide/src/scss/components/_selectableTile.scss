@@ -1,0 +1,14 @@
+ul.selectable{
+	li{
+		list-style: none;
+		padding: 5px;
+		font-family: sans-serif;
+		div{
+			border: 1px solid #666666;
+			padding: 10px;
+		}
+	}
+	li:hover > div{
+		background-color: #DDDDDD;
+	}
+}

@@ -1,0 +1,24 @@
+//1. First include variable overrides --
+
+//2. Then import the Foundation file you're updating --
+@import "~@core/vendor/scss/foundation-4.3.2/components/block-grid";
+
+//3. Lastly include your override to the foundation component such as mixin --
+
+  /* Macys Custom Class: a class to use with block grids in order to remove the spacing between columns
+     PLEASE NOTE: This was written this way on purpose, in order to force the LI definition to appear above the
+     class definition (meant for the UL).  Order it the other way, and it DOES NOT WORK!!!
+  */
+  [class*="block-grid-" ].nospacing{
+    & > li{
+      padding: 0 0 0 0;
+    }
+  }
+  [class*="block-grid-" ].nospacing{
+    margin: 0 0 0 0;
+  }
+  [class*="block-grid-" ]{
+     & > li{
+      line-height : initial;
+    }
+  }

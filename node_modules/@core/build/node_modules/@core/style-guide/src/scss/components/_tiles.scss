@@ -1,0 +1,65 @@
+//
+// Tiles Variables
+//
+$include-html-tiles-classes: $include-html-classes !default;
+
+//
+// Tiles Mixins
+//
+
+$tile-bg : #fff !default;
+$tile-bg-selected : darken(#fff, 5%) ;
+$tile-shadow : false !default;
+$tile-width : 150px !default;
+$tile-height : 78px !default;
+$tile-border-color : #ccc !default;
+$tile-border-size: 1px !default;
+$tile-padding : 10px !default;
+$tile-shadow-color : #ccc !default;
+$tile-border-style: solid !default;
+$tile-margin-right : 10px !default;
+$tile-font-color: #666 !default;
+$tile-font-size: emCalc(11px) !default;
+$tile-label-font-size: emCalc(16px);
+
+@mixin tiles($bg:$tile-bg,$shadow:$tile-shadow){
+    
+    background : $bg;
+    width : $tile-width;
+    height : $tile-height;
+    border-style : $tile-border-style;
+    border-width : $tile-border-size;
+    border-color : $tile-border-color;
+    padding : $tile-padding;
+    margin-right: $tile-margin-right;
+    font-size : $tile-font-size; 
+    float:left;
+    color: $tile-font-color;
+
+    @if $shadow{
+        -moz-box-shadow: $tile-shadow-color 0px 1px 4px;
+        box-shadow: $tile-shadow-color 0px 1px 4px;
+    }    
+}
+
+
+
+
+// Only include these classes if the option exists
+@if $include-html-panel-classes != false {
+  .tiles {
+    @include tiles;
+
+    &.selected {
+      @include tiles($tile-bg-selected,true);
+    }
+
+    & label{
+      font-size : $tile-label-font-size ;
+    }
+    & p {
+        line-height : 1.2;
+    }
+  }
+
+}

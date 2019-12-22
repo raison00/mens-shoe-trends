@@ -1,0 +1,111 @@
+
+	<div id="casual-desktop" class="desktop-only">
+		<div id="casual-hero-desktop">
+			<div id="casual-hero-text">
+				<h2 class="shoes-section-header">
+					ELEVATED CASUAL
+				</h2>
+				<p class="shoes-header-text">
+					Get the best of both worlds. Half relaxed <br> & half formal means you're 100% on-trend.
+				</p>
+				<a href="{{ENV_HOSTNAME}}/shop/featured/elevated-casual-mens-shoes" data-cm="elevatedcasual_shopnow">
+					<div class="desktop-shoe-shop casual-button">
+						<p class=" button-text">SHOP NOW</p>
+					</div>
+				</a>
+			</div>
+			<div class="casual-copy">
+				<p class="how-to-wear">HOW TO WEAR IT:</p>
+				<p class="section-copy">Completely versatile, wear with jeans or chinos & a fresh button-down.</p>
+			</div>
+		</div>
+
+		<div id="ProductCarousel">
+			<div id="gridWrapper">
+				<div id="horizontal-holder">
+					<div class="componentCarousel horizontal">
+						<div class="table-row">
+							<div class="table-cell">
+							    <button disabled="true" class="m-carousel-button prev" aria-label="scroll carousel left">
+		                            <span class="icon-ui-chevron-left-bk-huge"></span>
+		                        </button>
+							</div>
+							<div class="table-cell">
+								<div class="carouselWrapper">
+									<div class="scroller">
+										<ul class="carousel" tabindex="0" aria-label="carousel">
+										    {{#each apiData}}
+											    {{#ifCond this.product.id '===' 4485156}}
+			                                        <li  class="productThumbnailItem">
+			                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+			                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+			                                        </li>
+											    {{/ifCond}}
+											    {{#ifCond this.product.id '===' 4579450}}
+			                                        <li  class="productThumbnailItem">
+			                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+			                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+			                                        </li>
+											    {{/ifCond}}
+											    {{#ifCond this.product.id '===' 6826848}}
+			                                        <li  class="productThumbnailItem">
+			                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+			                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+			                                        </li>
+											    {{/ifCond}}
+											    {{#ifCond this.product.id '===' 2983107}}
+			                                        <li  class="productThumbnailItem">
+			                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+			                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+			                                        </li>
+											    {{/ifCond}}
+											    {{#ifCond this.product.id '===' 4506556}}
+			                                        <li  class="productThumbnailItem">
+			                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+			                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+			                                        </li>
+											    {{/ifCond}}
+											    {{#ifCond this.product.id '===' 5255928}}
+			                                        <li  class="productThumbnailItem">
+			                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+			                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+			                                        </li>
+											    {{/ifCond}}
+		                                    {{/each}}
+		                                </ul>
+									</div>
+								</div>
+								<div class="table-cell">
+			                        <button disabled="true" class="m-carousel-button next" aria-label="scroll carousel right">
+			                            <span class="icon-ui-chevron-right-bk-huge"></span>
+			                        </button>
+		                    	</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mobile-only">
+		<div id="casual-hero-mobile" class="small-12 columns">
+			<div id="casual-hero-text">
+				<h2 class="shoes-section-header">
+					ELEVATED CASUAL
+				</h2>
+				<p class="shoes-header-text casual-mobile-text">
+					Get the best of both worlds. Half relaxed & half formal means you're 100% on-trend.
+				</p>
+				<a href="{{ENV_HOSTNAME}}/shop/featured/elevated-casual-mens-shoes" data-cm="elevatedcasual_shopnow">
+					<div class="desktop-shoe-shop casual-button">
+						<p class=" button-text">SHOP NOW</p>
+					</div>
+				</a>
+			</div>
+			<div class="casual-copy">
+				<p class="how-to-wear">HOW TO WEAR IT:</p>
+				<p class="section-copy shoes-header-text">Completely versatile, wear with jeans or chinos & a fresh button-down.</p>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,28 @@
+/**
+  * @section Accessibility
+  * @name General Accessibility Remarks
+  * 
+  * @description The goal of Web accessibility practices is to give all users equal access to information and functionality. The components contained in this styleguide are built using the guidelines and techniques from the Web Content Accessibility Guidelines (WCAG 2.0). See each component section for accessiblity notes.
+*/
+
+/**
+  * @section Accessibility
+  * @name Screen Reader Support
+  * @cssFile File Location: included in macys-base.css
+  * @description '.hide-for-screenreader' class can be added for content that will be hidden visually, but accessible for screen readers.
+  * @markup
+  *   <span class="hide-for-screenreader">This content will be read by screen reader.</span>
+  *   <div class="hide-for-screenreader">This content will be read by screen reader.</div>
+*/
+.hide-for-screenreader,
+.hidden-for-small-up  
+//.hidden-for-small-up DEPRECATED DEPRECATED DEPRECATED, for support of old code use ONLY.  
+// Please use .hide-for-screnreader going forward
+{
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+

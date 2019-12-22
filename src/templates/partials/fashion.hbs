@@ -1,0 +1,103 @@
+
+<div class="desktop-only desktop-margin-top">
+	<div id="fashion-hero-desktop">
+		<div id="fashion-hero-text">
+			<h2 class="shoes-section-header">
+				FASHION SNEAKERS
+			</h2>
+			<p class="shoes-header-text fashion-hero-text">
+				It's a '90s throwback. Colorful patterns <br> & insignia are back on the scene.
+			</p>
+			<a href="{{ENV_HOSTNAME}}/shop/mens-clothing/shop-all-mens-footwear/Shoe_style,Shoe_type/Fashion%20Sneakers,Sneakers?id=55822&edge=hybrid" data-cm="fashionsneakers_shopnow">
+				<div class="desktop-shoe-shop fashion-button">
+					<p class="button-text">SHOP NOW</p>
+				</div>
+			</a>
+		</div>
+		<div id="rl-shown">
+			Shown: Polo Ralph Lauren
+		</div>
+		<div id="fashion-copy">
+			<p class="how-to-wear fashion-wear-it">HOW TO WEAR IT:</p>
+			<p class="section-copy fashion-section-copy">Whether it be varsity patches or the alpine trend, a bright<br> sneaker pairs perfectly with a hoodie, bomber & jeans.</p>
+		</div>
+	</div>
+
+
+	<div id="ProductCarousel">
+		<div id="gridWrapper">
+			<div id="horizontal-holder4">
+				<div class="componentCarousel horizontal">
+					<div class="table-row">
+						<div class="table-cell">
+						    <button disabled="true" class="m-carousel-button prev" aria-label="scroll carousel left">
+	                            <span class="icon-ui-chevron-left-bk-huge"></span>
+	                        </button>
+						</div>
+						<div class="table-cell">
+							<div class="carouselWrapper">
+								<div class="scroller">
+									<ul class="carousel" tabindex="0" aria-label="carousel">
+									    {{#each apiData}}
+										    {{#ifCond this.product.id '===' 6723060}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6723043}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6723046}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+										    {{#ifCond this.product.id '===' 6723061}}
+		                                        <li  class="productThumbnailItem">
+		                                            {{> component-product-thumbnail/mcom/product-thumbnail product}}
+		                                            <a class="qvLauncher" data-id="{{this.product.id}}"><button>QuickView</button></a>
+		                                        </li>
+										    {{/ifCond}}
+	                                    {{/each}}
+	                                </ul>
+								</div>
+							</div>
+							<div class="table-cell">
+		                        <button disabled="true" class="m-carousel-button next" aria-label="scroll carousel right">
+		                            <span class="icon-ui-chevron-right-bk-huge"></span>
+		                        </button>
+	                    	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="mobile-only">
+	<div id="fashion-hero-mobile">
+		<div id="fashion-hero-text">
+			<h2 class="shoes-section-header">
+				FASHION SNEAKERS
+			</h2>
+			<p class="shoes-header-text fashion-hero-copy">
+				It's a '90s throwback. Colorful patterns & insignia are back on the scene.
+			</p>
+			<a href="{{ENV_HOSTNAME}}/shop/mens-clothing/shop-all-mens-footwear/Shoe_style,Shoe_type/Fashion%20Sneakers,Sneakers?id=55822&edge=hybrid" data-cm="fashionsneakers_shopnow">
+				<div class="desktop-shoe-shop fashion-button">
+					<p class="button-text">SHOP NOW</p>
+				</div>
+			</a>
+		</div>
+		<div id="fashion-copy">
+			<p class="how-to-wear fashion-wear-it">HOW TO WEAR IT:</p>
+			<p class="section-copy shoes-header-text fashion-section-copy">Whether it be varsity patches or the alpine trend, a bright<br> sneaker pairs perfectly with a hoodie, bomber & jeans.</p>
+		</div>
+	</div>
+</div>

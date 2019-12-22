@@ -1,0 +1,110 @@
+{{! Load CSS First }}
+<link href="mcom/{{version}}/common.css" rel="stylesheet">
+<div class="desktop-only" id="shoe-trends-desktop">
+    <div id="trends-hero-desktop">
+        <div class="hero-text-container">
+            <h1 class="shoe-hero-title">OUR TOP<br> PICKS</h1>
+            <p class="shoe-hero-p">Discover standout styles<br> that take your look to the next level.</p>
+        </div>
+    </div>
+    <nav id="pagenavigation" class="watch-nav-desktop large-12 large-centered columns">
+        <div class="shoe-navbar">
+            <a data-ignore href="#chukka-hero-desktop">chukka<br>boots</a>
+            <a data-ignore href="#boots-hero-desktop">alpine<br>boots</a>
+            <a data-ignore href="#textured-hero-desktop">textured<br>dress shoes</a>
+            <a data-ignore href="#hilo-hero-desktop">high- & low-<br>top sneakers</a>
+        </div>
+        <div class="shoe-navbar">
+            <a data-ignore href="#fashion-hero-desktop">fashion<br>sneakers</a>
+            <a data-ignore href="#casual-hero-desktop">elevated<br>casual</a>
+            <a data-ignore href="#dress-hero-desktop">dress<br>shoes</a>
+            <a data-ignore href="#slippers-hero-desktop">smoking<br>slippers</a>
+        </div>
+    </nav>
+
+    <div id="shoe-trends-desktop-sections" class="large-12 small-12">
+        {{> chukka }} {{> boots }} {{> textured }} {{> hilo }} {{> fashion }} {{> casual }} {{> dress }} {{> slippers }}
+    </div>
+
+</div>
+
+<div class="mobile-only hide-for-large-up" id="shoe-trends-mobile">
+    <div class="shoe-trends-hero-mobile row">
+        <div class="hero-text-container small-12">
+            <h1 class="shoe-hero-title" style="text-align: left; margin-left:49vw">OUR<br> TOP<br> PICKS</h1>
+            <p class="shoe-hero-p" style="margin-top: 55vw;margin-right:5vw;">Discover standout styles that take your look to the next level.</p>
+        </div>
+    </div><!-- shoe-trends-hero-mobile -->
+    <div class="mobile-nav-container small-12">
+        <div class="row watches-mobile-nav1">
+            <div class="mobile-nav-item small-6">
+                <a data-ignore href="#chukka-mobile">
+					chukka<br>boots
+				</a>
+            </div>
+            <div class="mobile-nav-item small-6">
+                <a data-ignore href="#boots-mobile">
+					alpine<br>boots
+				</a>
+            </div>
+        </div>
+
+
+        <div class="row watches-mobile-nav2">
+            <div class="mobile-nav-item small-6 columns">
+                <a data-ignore href="#textured-mobile">
+					textured<br>dress shoes
+				</a>
+            </div>
+
+            <div class="mobile-nav-item small-6 columns">
+                <a data-ignore href="#hilo-mobile">
+					high- & low-<br> top sneakers
+				</a>
+            </div>
+        </div>
+
+
+        <div class="row watches-mobile-nav1">
+            <div class="mobile-nav-item small-6 columns">
+                <a data-ignore href="#fashion-mobile">
+					fashion<br> sneakers
+				</a>
+            </div>
+            <div class="mobile-nav-item small-6 columns">
+                <a data-ignore href="#casual-mobile">
+					elevated<br> casual
+				</a>
+            </div>
+        </div>
+
+
+        <div class="row watches-mobile-nav2">
+            <div class="mobile-nav-item small-6 columns">
+                <a data-ignore href="#dress-mobile">
+					dress<br> shoes
+				</a>
+            </div>
+            <div class="mobile-nav-item small-6 columns">
+                <a data-ignore href="#slippers-mobile">
+					smoking<br> slippers
+				</a>
+            </div>
+        </div>
+    </div> <!-- mobile-nav-container -->
+    <div id="shoe-trends-mobile-sections" class="row">
+        <div id="chukka-mobile" class="small-12 columns">{{> chukka }}</div>
+        <div id="boots-mobile" class="small-12 columns">{{> boots }}</div>
+        <div id="textured-mobile" class="small-12 columns">{{> textured }}</div>
+        <div id="hilo-mobile" class="small-12 columns">{{> hilo }}</div>
+        <div id="fashion-mobile" class="small-12 columns">{{> fashion }}</div>
+        <div id="casual-mobile" class="small-12 columns">{{> casual }}</div>
+        <div id="dress-mobile" class="small-12 columns">{{> dress }}</div>
+        <div id="slippers-mobile" class="small-12 columns">{{> slippers }}</div>
+    </div>
+
+</div>  <!-- shoe-trends-mobile -->
+
+{{! Load JS Last so DOM is already present }}
+<script src="mcom/{{version}}/js/mens-shoe-trends.manifest.js"></script>
+<script src="mcom/{{version}}/js/mens-shoe-trends.mcom.js"></script>

@@ -1,0 +1,35 @@
+//1. First include variable overrides --
+$body-font-color: $macysGrey1 !default;
+
+
+//2. Then import the Foundation file you're updating --
+@import "~@core/vendor/scss/foundation-4.3.2/components/global";
+
+
+
+//3. Lastly include your override to the foundation component such as mixin --
+@if $include-html-global-classes {
+
+  // Default body styles
+  body {
+    cursor: inherit; /* Previously commented out in Foundation base file to fix the map area issue in IE browsers */
+  }
+
+  // // Grid Defaults to get images and embeds to work properly
+  // img,
+  // //object, /* Commented out to resolve object tag issue in IE browsers.*/
+  // embed,
+  img.responsive-shrink { max-width: 100%; height: auto; }
+
+
+  // // object,
+  // embed { height: 100%; }
+
+
+
+  /* Overwrite for lines 317 & 328, previously commented out to resolve object tag issue in IE browsers */
+  object {
+    max-width: inherit;
+    height: inherit;
+  }
+}

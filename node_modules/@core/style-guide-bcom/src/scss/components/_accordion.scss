@@ -1,0 +1,12 @@
+@import "../encodedIcons/_bcom-collapse";
+@import "../encodedIcons/_bcom-expand-bold";
+.accordion {
+    .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0;
+    }
+    ul {
+        list-style-type: disc;
+    }
+}

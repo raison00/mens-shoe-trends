@@ -1,0 +1,1314 @@
+// These are the comments for DSS 
+// By running `grunt dss`, these get parsed into a json file, 
+// which is then imported to ui-standards.herokuapp.com
+// ======================================================================================
+
+//
+// @name Loader
+// @section Loader
+// @description CSS-only Loader - display varies in buttons and common loader
+// @markup
+//  <div id="loader1"><p style="border: 1px solid black">Messenger bag jean shorts wayfarers organic kale chips PBR&B. PBR&B chambray umami, gastropub cliche you probably haven't heard of them Truffaut Godard fap occupy vinyl chia cold-pressed craft beer Wes Anderson. Umami ethical post-ironic, 8-bit whatever pop-up next level cold-pressed butcher McSweeney's meditation Etsy dreamcatcher roof party. Ethical food truck wolf mlkshk Banksy Truffaut, cold-pressed wayfarers banh mi cliche gastropub Tumblr beard tilde. Church-key organic swag cornhole four loko, mustache yr Bushwick authentic taxidermy Brooklyn fap cold-pressed butcher. Street art cred keffiyeh squid ethical, quinoa 8-bit. Hashtag flannel twee yr.</p></div>
+//  <div id="loader2" style="height:400px; width:400px; border:1px solid black"></div>
+//  <a class="large button" id="loader3">Click for loader</a>
+//  <button class="medium secondary" id="loader5">click me</button>
+//  <button class="small tertiary" id="loader6">click me</button>
+//  <button class="tiny tertiary" id="loader7">click me</button>
+//  <div><div class="loader"></div></div>
+//   <script>
+//     require(['jquery','loader'],function($, loader){
+//       loader.show('#loader1');
+//       loader.show('#loader2', {className: 'tertiary'});
+//       $('#loader3').on('click', function(){
+//          loader.show('#loader3');
+//        });
+//       $('#loader5').on('click', function(){
+//          loader.show('#loader5');
+//        });
+//       $('#loader6').on('click', function(){
+//          loader.show('#loader6', {className: 'secondary'});
+//        });
+//       $('#loader7').on('click', function(){
+//          loader.show('#loader7', {className: 'secondary'});
+//        });
+//     });
+//   </script>
+//
+
+
+
+// Common Loader Styles.
+
+$baseUrl: null;
+
+.loader {
+  background: url(#{$baseUrl}/sns/web20/assets/img/loading.gif) no-repeat center center;
+  // background: url('https://www.macys.com/sns/web20/assets/img/checkout/loading.gif') no-repeat center center;
+  height: 30px;
+}
+
+// .loader-container {
+//     position: absolute;
+//     z-index: 999;
+//     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff,endColorstr=#99ffffff);
+//     // background-color: rgba(255, 255, 255, 0.6) !important;
+// }
+
+
+// .loader-container{
+//   // background: #eee;
+// }
+// .loader-svg{
+//   background: url('20140324_MEW-Spinner.svg');
+//   width: 11em;
+//   height:11em;
+//   float: left;
+//   margin-left: 200px;
+//   -webkit-animation: load3 1.4s infinite linear;
+//   animation: load3 1.4s infinite linear;
+// }
+
+//css3 keyframes
+
+// @-webkit-keyframes load3 {
+//   0% {
+//     -webkit-transform: rotate(0deg);
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     -webkit-transform: rotate(360deg);
+//     transform: rotate(360deg);
+//   }
+// }
+// @keyframes load3 {
+//   0% {
+//     -webkit-transform: rotate(0deg);
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     -webkit-transform: rotate(360deg);
+//     transform: rotate(360deg);
+//   }
+// }
+
+
+// CSS-only loader
+// http://projects.lukehaas.me/css-loaders/?utm_source=html5weekly&utm_medium=email
+// No. 4 from left
+
+// ====================================
+// =========  Variables  ==============
+// ====================================
+
+$loader-size-default: 1em;
+$loader-spacing-default: (1 * $loader-size-default);
+$loader-size-small: 0.3em;
+$loader-spacing-small: (0.75 * $loader-size-small);
+
+// // horizontal position
+// $h-shadow1: 0; 
+// $h-shadow2: ($spacing * 2); 
+// $h-shadow3: ($spacing * 3); 
+// $h-shadow4: ($spacing * 2); 
+// $h-shadow5: 0; 
+// $h-shadow6: -($spacing * 2); 
+// $h-shadow7: -($spacing * 3); 
+// $h-shadow8: -($spacing * 2); 
+
+// // vertical position
+// $v-shadow1: -($spacing * 3); 
+// $v-shadow2: -($spacing * 2); 
+// $v-shadow3: 0; 
+// $v-shadow4: $spacing * 2; 
+// $v-shadow5: $spacing * 3; 
+// $v-shadow6: $spacing * 2; 
+// $v-shadow7: 0; 
+// $v-shadow8: -($spacing * 2 ); 
+
+// blur
+$blur-primary: 0;
+$blur1: $blur-primary;
+$blur2: $blur-primary;
+$blur3: $blur-primary;
+$blur4: $blur-primary;
+$blur5: $blur-primary;
+$blur6: $blur-primary;
+$blur7: $blur-primary;
+$blur8: $blur-primary;
+
+// spread
+// determines the size each individual circle's going to expand/shrink to 
+// (animation of each individual circles)
+
+// color
+$loader-color-primary: $macysRed;
+$loader-color-secondary: $macysBlack;
+$loader-color-tertiary: $macysGrey2;
+// each of the eight circles
+$loader-color1-primary: $loader-color-primary;
+$loader-color2-primary: $loader-color-primary;
+$loader-color3-primary: $loader-color-primary;
+$loader-color4-primary: $loader-color-primary;
+$loader-color5-primary: $loader-color-primary;
+$loader-color6-primary: $loader-color-primary;
+$loader-color7-primary: $loader-color-primary;
+$loader-color8-primary: $loader-color-primary;
+
+$loader-color1-secondary: $loader-color-secondary;
+$loader-color2-secondary: $loader-color-secondary;
+$loader-color3-secondary: $loader-color-secondary;
+$loader-color4-secondary: $loader-color-secondary;
+$loader-color5-secondary: $loader-color-secondary;
+$loader-color6-secondary: $loader-color-secondary;
+$loader-color7-secondary: $loader-color-secondary;
+$loader-color8-secondary: $loader-color-secondary;
+
+$loader-color1-tertiary: $loader-color-tertiary;
+$loader-color2-tertiary: $loader-color-tertiary;
+$loader-color3-tertiary: $loader-color-tertiary;
+$loader-color4-tertiary: $loader-color-tertiary;
+$loader-color5-tertiary: $loader-color-tertiary;
+$loader-color6-tertiary: $loader-color-tertiary;
+$loader-color7-tertiary: $loader-color-tertiary;
+$loader-color8-tertiary: $loader-color-tertiary;
+
+
+$loaderdot-color-primary: $macysWhite;
+$loaderdot-color-secondary: $macysGrey2;
+$loaderdot-color-tertiary: $macysRed;
+
+
+// ====================================
+// =======  Loader Mixins  ============
+// ====================================
+
+// generic keyframe mixin - good for keyframes of all kinds
+// @mixin keyframes($name, $spacing) {
+//   @-webkit-keyframes #{$name} {
+//     @content; 
+//   }
+//   @-moz-keyframes #{$name} {
+//     @content;
+//   }
+//   @-ms-keyframes #{$name} {
+//     @content;
+//   }
+//   @keyframes #{$name} {
+//     @content;
+//   } 
+// }
+
+
+// main mixin for circular loaders
+@mixin loader-circular($size: $loader-size-default, $spacing: $loader-spacing-default, $color:$loader-color-primary){
+  font-size: 1em;
+  margin: 0 auto;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  @if ($color == $loader-color-primary) {
+    @include primary-circular-loader-animation($spacing: $loader-spacing-default);
+  } @else if($color == $loader-color-secondary) {
+      @include secondary-circular-loader-animation($spacing: $loader-spacing-default);
+  } @else if($color == $loader-color-tertiary) {
+      @include tertiary-circular-loader-animation($spacing: $loader-spacing-default);
+  }
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+// use of keyframes mixin to define my various circular loader keyframes
+
+@mixin primary-circular-loader-animation($spacing:$loader-spacing-default){
+  @-webkit-keyframes primary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-primary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-primary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-primary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-primary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-primary;
+    }
+  }
+  @-moz-keyframes primary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-primary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-primary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-primary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-primary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-primary;
+    }
+  }
+  @-ms-keyframes primary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-primary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-primary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-primary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-primary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-primary;
+    }
+  }
+  @-o-keyframes primary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-primary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-primary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-primary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-primary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-primary;
+    }
+  }
+  @keyframes primary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-primary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-primary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-primary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-primary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-primary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-primary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-primary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-primary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-primary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-primary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-primary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-primary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-primary;
+    }
+  }
+  -webkit-animation: primary-circular-loader 1.6s infinite ease-in-out;
+  -moz-animation: primary-circular-loader 1.6s infinite ease-in-out;
+  -ms-animation: primary-circular-loader 1.6s infinite ease-in-out;
+  -o-animation: primary-circular-loader 1.6s infinite ease-in-out;
+  animation: primary-circular-loader 1.6s infinite ease-in-out;
+}
+
+
+@mixin secondary-circular-loader-animation($spacing:$loader-spacing-default){
+  @-webkit-keyframes secondary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-secondary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-secondary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-secondary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-secondary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-secondary;
+    }
+  }
+  @-moz-keyframes secondary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-secondary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-secondary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-secondary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-secondary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-secondary;
+    }
+  }
+  @-ms-keyframes secondary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-secondary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-secondary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-secondary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-secondary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-secondary;
+    }
+  }
+  @-o-keyframes secondary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-secondary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-secondary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-secondary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-secondary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-secondary;
+    }
+  }
+  @keyframes secondary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-secondary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-secondary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-secondary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-secondary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-secondary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-secondary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-secondary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-secondary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-secondary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-secondary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-secondary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-secondary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-secondary;
+    }
+  }
+  -webkit-animation: secondary-circular-loader 1.6s infinite ease-in-out;
+  -moz-animation: secondary-circular-loader 1.6s infinite ease-in-out;
+  -ms-animation: secondary-circular-loader 1.6s infinite ease-in-out;
+  -o-animation: secondary-circular-loader 1.6s infinite ease-in-out;
+  animation: secondary-circular-loader 1.6s infinite ease-in-out;
+}
+
+@mixin tertiary-circular-loader-animation($spacing:$loader-spacing-default){
+  @-webkit-keyframes tertiary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-tertiary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-tertiary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-tertiary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-tertiary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-tertiary;
+    }
+  }
+  @-moz-keyframes tertiary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-tertiary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-tertiary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-tertiary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-tertiary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-tertiary;
+    }
+  }
+  @-ms-keyframes tertiary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-tertiary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-tertiary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-tertiary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-tertiary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-tertiary;
+    }
+  }
+  @-o-keyframes tertiary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-tertiary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-tertiary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-tertiary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-tertiary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-tertiary;
+    }
+  }
+  @keyframes tertiary-circular-loader {
+     0%,
+    100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.2  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    10% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.2  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    20% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0.1  * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.2  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    30% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0.1  * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.2  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    40% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (0    * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0.1  * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.2  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (-0.5 * $loader-size-default) $loader-color8-tertiary;
+    }
+    50% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (0    * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0.1  * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.2  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-tertiary;
+    }
+    60% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (0    * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0.1  * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.2  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-tertiary;
+    }
+    70% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (-0.5 * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (0    * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0.1  * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.2  * $loader-size-default) $loader-color8-tertiary;
+    } 
+    80% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0    * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (-0.5 * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (0    * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0.1  * $loader-size-default) $loader-color8-tertiary;
+    }
+    90% {
+      box-shadow: ($spacing * 0) (-$spacing * 3) $blur1 (0.1  * $loader-size-default) $loader-color1-tertiary,  ($spacing * 2) (-$spacing * 2) $blur2 (0    * $loader-size-default) $loader-color2-tertiary,  ($spacing * 3) ($spacing * 0) $blur3 (-0.5 * $loader-size-default) $loader-color3-tertiary,  ($spacing * 2) ($spacing * 2) $blur4 (-0.5 * $loader-size-default) $loader-color4-tertiary,  ($spacing * 0) ($spacing * 3) $blur5 (-0.5 * $loader-size-default) $loader-color5-tertiary,  (-$spacing * 2) ($spacing * 2) $blur6 (-0.5 * $loader-size-default) $loader-color6-tertiary,  (-$spacing * 3) ($spacing * 0) $blur7 (-0.5 * $loader-size-default) $loader-color7-tertiary,  (-$spacing * 2) (-$spacing * 2) $blur8 (0    * $loader-size-default) $loader-color8-tertiary;
+    }
+  }
+  -webkit-animation: tertiary-circular-loader 1.6s infinite ease-in-out;
+  -moz-animation: tertiary-circular-loader 1.6s infinite ease-in-out;
+  -ms-animation: tertiary-circular-loader 1.6s infinite ease-in-out;
+  -o-animation: tertiary-circular-loader 1.6s infinite ease-in-out;
+  animation: tertiary-circular-loader 1.6s infinite ease-in-out;
+}
+
+
+// use of keyframes mixin to define my various button loader keyframes
+
+@mixin primary-button-loader-animation($color:$loaderdot-color-primary){
+  @-webkit-keyframes load-dots-primary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-primary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-primary;
+    }
+  }
+  @-moz-keyframes load-dots-primary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-primary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-primary;
+    }
+  }
+  @-ms-keyframes load-dots-primary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-primary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-primary;
+    }
+  }
+  @-o-keyframes load-dots-primary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-primary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-primary;
+    }
+  }
+  @keyframes load-dots-primary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-primary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-primary;
+    }
+  }
+  -webkit-animation: load-dots-primary 1.8s infinite ease-in-out;
+  -moz-animation: load-dots-primary 1.8s infinite ease-in-out;
+  -ms-animation: load-dots-primary 1.8s infinite ease-in-out;
+  -o-animation: load-dots-primary 1.8s infinite ease-in-out;
+  animation: load-dots-primary 1.8s infinite ease-in-out;
+}
+
+@mixin secondary-button-loader-animation($color:$loaderdot-color-secondary){
+  @-webkit-keyframes load-dots-secondary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-secondary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-secondary;
+    }
+  }
+  @-moz-keyframes load-dots-secondary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-secondary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-secondary;
+    }
+  }
+  @-ms-keyframes load-dots-secondary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-secondary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-secondary;
+    }
+  }
+  @-o-keyframes load-dots-secondary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-secondary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-secondary;
+    }
+  }
+  @keyframes load-dots-secondary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-secondary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-secondary;
+    }
+  }
+  -webkit-animation: load-dots-secondary 1.8s infinite ease-in-out;
+  -moz-animation: load-dots-secondary 1.8s infinite ease-in-out;
+  -ms-animation: load-dots-secondary 1.8s infinite ease-in-out;
+  -o-animation: load-dots-secondary 1.8s infinite ease-in-out;
+  animation: load-dots-secondary 1.8s infinite ease-in-out;
+}
+
+@mixin tertiary-button-loader-animation($color:$loaderdot-color-tertiary){
+  @-webkit-keyframes load-dots-tertiary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-tertiary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-tertiary;
+    }
+  }
+  @-moz-keyframes load-dots-tertiary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-tertiary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-tertiary;
+    }
+  }
+  @-ms-keyframes load-dots-tertiary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-tertiary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-tertiary;
+    }
+  }
+  @-o-keyframes load-dots-tertiary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-tertiary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-tertiary;
+    }
+  }
+  @keyframes load-dots-tertiary {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 1em 0 -0.8em $loaderdot-color-tertiary;
+    }
+    40% {
+      box-shadow: 0 1em 0 0 $loaderdot-color-tertiary;
+    }
+  }
+  -webkit-animation: load-dots-tertiary 1.8s infinite ease-in-out;
+  -moz-animation: load-dots-tertiary 1.8s infinite ease-in-out;
+  -ms-animation: load-dots-tertiary 1.8s infinite ease-in-out;
+  -o-animation: load-dots-tertiary 1.8s infinite ease-in-out;
+  animation: load-dots-tertiary 1.8s infinite ease-in-out;
+}
+
+// ====================================
+// =========  Loader CSS  =============
+// ====================================
+
+.loader-container.page-level{
+  font-size: 10px;
+}
+
+.loader-container{
+  font-size: 5px;
+  padding: 3px;
+  position: absolute;
+  z-index: 999;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99ffffff,endColorstr=#99ffffff);
+  background-color: rgba(255, 255, 255, 0.6);
+  > .loader {
+    @include loader-circular($size: $loader-size-default, $spacing: $loader-spacing-default, $color:$loader-color-primary);
+    &.primary { @include loader-circular($size: $loader-size-default, $spacing: $loader-spacing-default, $color:$loader-color-primary); }
+    &.secondary { @include loader-circular($size: $loader-size-default, $spacing: $loader-spacing-default, $color:$loader-color-secondary); }
+    &.tertiary { @include loader-circular($size: $loader-size-default, $spacing: $loader-spacing-default, $color:$loader-color-tertiary); }
+  }
+}
+
+// .loader {
+//   @include loader-circular($size: $loader-size-default, $spacing: $loader-spacing-default, $color:$loader-color-primary);
+//   &.primary { @include loader-circular($size: $loader-size-default, $spacing: $loader-spacing-default, $color:$loader-color-primary); }
+//   &.secondary { @include loader-circular($size: $loader-size-default, $spacing: $loader-spacing-default, $color:$loader-color-secondary); }
+//   &.tertiary { @include loader-circular($size: $loader-size-default, $spacing: $loader-spacing-default, $color:$loader-color-tertiary); }
+// }
+
+// ====================================
+// =====  Button Loader CSS  ==========
+// ====================================
+$loader-dot-size: 0.65em;
+$loader-dot-font-size: 0.65rem;
+
+button .loader-container,
+.button .loader-container {
+  padding: 0 3px;
+  margin: 0;
+  left: 0;
+  background-color: transparent;
+  filter: none;
+}
+
+button .loader-container .loader,
+.button .loader-container .loader {
+  border-radius: 50%;
+  width: $loader-dot-size;
+  height: $loader-dot-size;
+  background: none;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  @include primary-button-loader-animation($color:$loaderdot-color-primary);
+  &:before,
+  &:after,
+  &.primary,
+  &.primary:before,
+  &.primary:after {
+    border-radius: 50%;
+    width: $loader-dot-size;
+    height: $loader-dot-size;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    @include primary-button-loader-animation($color:$loaderdot-color-primary);
+  }
+  &.secondary,
+  &.secondary:before,
+  &.secondary:after {
+    border-radius: 50%;
+    width: $loader-dot-size;
+    height: $loader-dot-size;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    @include secondary-button-loader-animation($color:$loaderdot-color-secondary);
+  }
+  &.tertiary,
+  &.tertiary:before,
+  &.tertiary:after {
+    border-radius: 50%;
+    width: $loader-dot-size;
+    height: $loader-dot-size;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    @include tertiary-button-loader-animation($color:$loaderdot-color-tertiary);
+  }
+  font-size: $loader-dot-font-size;
+  margin: -4px auto 15px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+  &.primary,
+  &.secondary,
+  &.tertiary {
+    font-size: $loader-dot-font-size;
+    margin: -4px auto 15px auto;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+  &:before,
+  &.primary:before,
+  &.secondary:before,
+  &.tertiary:before {
+    left: -1.5 * $loader-dot-size;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+    content: '';
+    position: absolute;
+    top: 0;
+  }
+  &:after,
+  &.primary:after,
+  &.secondary:after,
+  &.tertiary:after {
+    left: 1.5 * $loader-dot-size;
+    content: '';
+    position: absolute;
+    top: 0;
+  }
+}
+
+
+
+// Large Buttons CSS  - have larger loader-dot-font-size + loader-dot-size
+
+button.large .loader-container .loader,
+.button.large .loader-container .loader {
+  width: 1rem;
+  height: 1rem;
+  &:before,
+  &:after,
+  &.primary,
+  &.primary:before,
+  &.primary:after {
+    width: 1rem;
+    height: 1rem;
+  }
+  &.secondary,
+  &.secondary:before,
+  &.secondary:after {
+    width: 1rem;
+    height: 1rem;
+  }
+  &.tertiary,
+  &.tertiary:before,
+  &.tertiary:after {
+    width: 1rem;
+    height: 1rem;
+  }
+  font-size: 1rem;
+  margin: -12px auto 15px auto;
+  &.primary,
+  &.secondary,
+  &.tertiary {
+    font-size: 1rem;
+    margin: -12px auto 15px auto;
+  }
+  &:before,
+  &.primary:before,
+  &.secondary:before,
+  &.tertiary:before {
+    left: -1.5 * 1rem;
+  }
+  &:after,
+  &.primary:after,
+  &.secondary:after,
+  &.tertiary:after {
+    left: 1.5 * 1rem;
+  }
+}
+
+
+
+// Small Buttons CSS  - have larger loader-dot-font-size + loader-dot-size
+
+button.small .loader-container .loader,
+.button.small .loader-container .loader {
+
+  margin: -5px auto 15px auto;
+  &.primary,
+  &.secondary,
+  &.tertiary {
+    margin: -5px auto 15px auto;
+  }
+}
+
+// Tiny Buttons CSS  - have larger loader-dot-font-size + loader-dot-size
+
+button.tiny .loader-container .loader,
+.button.tiny .loader-container .loader {
+
+  margin: -6.5px auto 15px auto;
+  &.primary,
+  &.secondary,
+  &.tertiary {
+    margin: -6.5px auto 15px auto;
+  }
+}
+// button .loader:before,
+// .button .loader:before,
+// button .loader:after,
+// .button .loader:after,
+// button .loader,
+// .button .loader,
+// button .loader.primary:before,
+// .button .loader.primary:before,
+// button .loader.primary:after,
+// .button .loader.primary:after,
+// button .loader.primary,
+// .button .loader.primary {
+//   border-radius: 50%;
+//   width: $loader-dot-size;
+//   height: $loader-dot-size;
+//   -webkit-animation-fill-mode: both;
+//   animation-fill-mode: both;
+//   @include primary-button-loader-animation($color:$loaderdot-color-primary)
+// }
+
+// button .loader.secondary:before,
+// .button .loader.secondary:before,
+// button .loader.secondary:after,
+// .button .loader.secondary:after,
+// button .loader.secondary,
+// .button .loader.secondary {
+//   border-radius: 50%;
+//   width: $loader-dot-size;
+//   height: $loader-dot-size;
+//   -webkit-animation-fill-mode: both;
+//   animation-fill-mode: both;
+//   @include secondary-button-loader-animation($color:$loaderdot-color-secondary)
+// }
+// button .loader.tertiary:before,
+// .button .loader.tertiary:before,
+// button .loader.tertiary:after,
+// .button .loader.tertiary:after,
+// button .loader.tertiary,
+// .button .loader.tertiary {
+//   border-radius: 50%;
+//   width: $loader-dot-size;
+//   height: $loader-dot-size;
+//   -webkit-animation-fill-mode: both;
+//   animation-fill-mode: both;
+//   @include tertiary-button-loader-animation($color:$loaderdot-color-tertiary)
+// }
+
+// button .loader,
+// .button .loader,
+// button .loader.primary,
+// .button .loader.primary,
+// button .loader.secondary,
+// .button .loader.secondary,
+// button .loader.tertiary,
+// .button .loader.tertiary {
+//   font-size: $loader-dot-font-size;
+//   margin: -5px auto 15px auto;
+//   position: relative;
+//   text-indent: -9999em;
+//   -webkit-transform: translateZ(0);
+//   -ms-transform: translateZ(0);
+//   transform: translateZ(0);
+//   -webkit-animation-delay: -0.16s;
+//   animation-delay: -0.16s;
+// }
+// button .loader:before,
+// .button .loader:before,
+// button .loader.primary:before,
+// .button .loader.primary:before,
+// button .loader.secondary:before,
+// .button .loader.secondary:before,
+// button .loader.tertiary:before,
+// .button .loader.tertiary:before {
+//   left: -1.5 * $loader-dot-size;
+//   -webkit-animation-delay: -0.32s;
+//   animation-delay: -0.32s;
+//   content: '';
+//   position: absolute;
+//   top: 0;
+// }
+// button .loader:after,
+// .button .loader:after,
+// button .loader.primary:after,
+// .button .loader.primary:after,
+// button .loader.secondary:after,
+// .button .loader.secondary:after,
+// button .loader.tertiary:after,
+// .button .loader.tertiary:after {
+//   left: 1.5 * $loader-dot-size;
+//   content: '';
+//   position: absolute;
+//   top: 0;
+// }
+
+
+@-webkit-keyframes load-dots {
+  0%,
+  80%,
+  100% {
+      //box-shadow: none|h-shadow v-shadow blur spread color |inset|initial|inherit;
+      //h-shadow and v-shadow determines each circle's coordinates
+      //spread determines how much each individual circle animate (blow up and shrink)
+      //       h-shadow v-shadow  blur        spread                       color
+    box-shadow: 0 1em 0 -0.8em $loaderdot-color-primary;
+  }
+  40% {
+    box-shadow: 0 1em 0 0 $loaderdot-color-primary;
+  }
+}
+@keyframes load-dots {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 1em 0 -0.8em $loaderdot-color-primary;
+  }
+  40% {
+    box-shadow: 0 1em 0 0 $loaderdot-color-primary;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,132 @@
+//1. First include variable overrides --
+// Split Button Variables
+//
+$split-button-pip-top-tny: $button-tny * 3;
+$split-button-pip-top-sml: $button-sml * 2.4;
+$split-button-pip-top-med: $button-med * 1.8;
+
+$split-button-pip-color: $macysWhite !default;
+$primary-span-border-color: $macysWhite !default;
+
+//Secondary
+$secondary-button-pip-color:$macysGrey1;
+$secondary-span-border-color:$macysGrey1;
+$include-html-splitButton-classes: $include-html-classes !default;
+//2. Then import the Foundation file you're updating --
+@import "~@core/vendor/scss/foundation-4.3.2/components/split-buttons";
+
+
+@if $include-html-button-classes !=false {
+    /* Split Buttons */
+
+    button.split, .split.button {
+        @include split-button(medium, $split-button-pip-color, $primary-span-border-color, true);
+        &.secondary {
+            @include split-button(false, $secondary-button-pip-color, $secondary-span-border-color, false);
+        }
+        &.tertiary {
+            @include split-button(false, #000, #999, false);
+        }
+        &.tiny {
+            @include split-button(tiny, false, false, false);
+        }
+        &.small {
+            @include split-button(small, false, false, false);
+        }
+        &.large {
+            @include split-button(large, false, false, false);
+        }
+        &.expand {
+            padding-left: 2em;
+        }
+        & > ul {
+            display: none;
+        }
+    }
+}
+
+.ui-tooltip-content {
+    .offset-tooltip {
+        padding: 0px;
+        margin: 10px 0 10px -140px;
+        width: 200px;
+    }
+    .offset-tooltip ul {
+        margin-bottom: 0;
+    }
+    .offset-tooltip li {
+        padding: 7px;
+        list-style-type: none;
+        line-height: 1.6;
+    }
+    .offset-tooltip li a {
+        text-decoration: none;
+    }
+    .offset-tooltip li input {
+        margin-right: 5px;
+    }
+    .offset-tooltip li:hover {
+        background: #CCC
+    }
+}
+
+
+
+
+
+// These are the comments for DSS
+// By running `grunt dss`, these get parsed into a json file,
+// which is then imported to ui-standards.herokuapp.com
+// ======================================================================================
+/**
+  * @name Split Buttons
+  * @section Buttons
+  * @description The split button is a unique custom control with distinct behavior and functionality. When the "main" area of the button is clicked the default <code>onClick</code> event handler is executed, with the following callback: <code>function(elementId, value, label)</code>. When the "down arrow" is clicked a tooltip menu is presented with additional options, clicking on an options triggers the same behavior as the default. This varies from a conventional select control in that the action is immediately executed. Splitbuttons can be primary,secondary or tertiary buttons.
+  * @markup
+  * <script>
+  *   require(["splitButton"], function(SplitButton){
+  *      var sb = new SplitButton('#wishlist-button-1',{cssClassName:"css-tooltip offset-tooltip caret_topLeft"});
+  *      sb.onClick(function(id, value, label){
+  *         console.log(id);
+  *        console.log(value);
+  *        console.log(label);
+  *      })
+  *     $(document).click(function(e){
+  *           var target = $(event.target);
+  *           var parentTooltip=$(event.target).parents(".css-tooltip");
+  *           if ( parentTooltip.length===0) {
+  *
+  *               sb.close()
+  *
+  *            }else{
+  *
+  *               $(event.target).children("input").attr('checked', true);
+  *            }
+  *           });
+  *     })
+  * </script>
+  * <h5>Example One with options in markup</h5>
+  * <button href="#" id="wishlist-button-1" class="button secondary split" data-value="default WL">Add to Wishlist<span></span>
+  * <ul><li><input type="checkbox" name="marge" value="Add to Marge's Wishlist"/>Kristine's Wishlist</li>
+  * <li><input type="checkbox" name="marge" value="Add to Homer's Wishlist"/>Cassandra's Wishlist</li>
+  * <li><input type="checkbox" name="marge" value="Add to Bart's Wishlist"/>Maria's Wishlist</li>
+  * <li><input type="checkbox" name="marge" value="Add to Lisa's Wishlist"/>Jorge's Wishlist</li>
+  * </ul>
+  * </button>
+  *
+  * <h5>Example Two with options defined in constructor</h5>
+  * <script>
+  *   require(["splitButton"], function(SplitButton){
+  *   var config = {cssClassName:"css-tooltip offset-tooltip caret_topLeft", options:[{id:'opt1', value:"Kristine's Wishlist", label:"Kristine's Wishlist"},{id:"opt2", value:"Cassandra's Wishlist", label:"Cassandra's Wishlist"},{id:"opt3", value:"Maria's Wishlist", label:"Maria's Wishlist"}]};
+  *   var sb = new SplitButton('#wishlist-button-2',config);
+  *       sb.onClick(function(id, value, label){
+  *         console.log(id);
+  *         console.log(value);
+  *         console.log(label);
+  *      });
+  *    $(document).click(function(){sb.close()});
+  *  })
+  * </script>
+  * <button href="#" id="wishlist-button-2" class="split" data-value="default_WL">Add to My Wishlist<span></span></button>
+  *
+  */

@@ -1,0 +1,132 @@
+{
+  "name": "@marketing-campaigns/mens-shoe-trends",
+  "description": "",
+  "version": "0.37.0",
+  "repository": {
+    "type": "git",
+    "url": "git@code.devops.fds.com:polaris/campaign/mens-shoe-trends.git"
+  },
+  "config": {
+    "environment": [
+      {
+        "name": "key1",
+        "local": {
+          "mcom": "value1",
+          "bcom": "value2"
+        },
+        "prod": {
+          "mcom": "__VALUE3__",
+          "bcom": "__VALUE4__"
+        }
+      },
+      {
+        "name": "ENTRY_POINT",
+        "local": {
+          "mcom": "mcom",
+          "bcom": "bcom"
+        },
+        "prod": {
+          "mcom": "mcom",
+          "bcom": "bcom"
+        }
+      },
+      {
+        "name": "XAPI_HOST",
+        "local": {
+          "mcom": "https://mcom.xapi.com",
+          "bcom": "https://bcom.xapi.com"
+        },
+        "prod": {
+          "mcom": "__VALUE5__",
+          "bcom": "__VALUE6__"
+        }
+      }
+    ],
+    "pages": [
+      {
+        "path": "/",
+        "template": "main",
+        "autoHeader": true,
+        "autoFooter": true,
+        "quickview": true,
+        "apiCall": {
+          "method": "GET",
+          "path": "https://www.macys.com/xapi/discover/v1/product?productIds=6125931,6552858,4780528,6642895,5470539,6069120,6373212,6640892,6605764,6612188,6373221,6210799,5701817,6620847,6750051,6538279,5003294,5930287,6723060,6723043,6723046,6723061,4485156,4579450,6826848,2983107,4506556,5255928,6210817,2790317,6605764,6612194,6210816,6210816,4650591,6586984,6584074,6797740,5470093,7003607,6701818,6593008,6893576,6886778,6593014,6593012,2948094,6071346,6824143,5930286"
+        },
+        "tags": {
+          "description": "Master today's Trending Shoes for Men. From men's casual shoes like slip on sandals to the more formal oxford shoes, Macy's will take care of all your style needs.",
+          "canonical": "https://www.macys.com/p/mens-shoe-trends/",
+          "robots": "index, follow",
+          "title": "Trending Shoes for Men"
+        },
+        "coremetrics": {
+          "pageType": "staticpages",
+          "pageId": "mensshoetrends",
+          "categoryID": "standard"
+        }
+      },
+      {
+        "path": "/boots/",
+        "template": "partials/boots",
+        "autoHeader": true,
+        "autoFooter": true,
+        "quickview": true,
+        "apiCall": {
+          "method": "GET",
+          "path": "https://www.macys.com/xapi/discover/v1/product?productIds=4650591,6586984,6584074,6797740,5470093,7003607,6701818,6593008"
+        }
+      },
+      {
+        "path": "/chukka/",
+        "template": "partials/chukka",
+        "autoHeader": true,
+        "autoFooter": true,
+        "quickview": true,
+        "apiCall": {
+          "method": "GET",
+          "path": "https://www.macys.com/xapi/discover/v1/product?productIds=6124241,5775315,5407010,5671156,4647428,5015264,1793948,6190564"
+        }
+      },
+      {
+        "path": "/casual/",
+        "template": "partials/casual",
+        "autoHeader": true,
+        "autoFooter": true,
+        "quickview": true,
+        "apiCall": {
+          "method": "GET",
+          "path": "https://www.macys.com/xapi/discover/v1/product?productIds=5601597,5601598,5601594,5674862,1606222,5414656,5674861,5674863"
+        }
+      },
+      {
+        "path": "/slippers/",
+        "template": "partials/slippers",
+        "autoHeader": true,
+        "autoFooter": true,
+        "quickview": true,
+        "apiCall": {
+          "method": "GET",
+          "path": "https://www.macys.com/xapi/discover/v1/product?productIds=6893576,6886778,6593014,6593012,2948094,6071346,6824143,5930286"
+        }
+      }
+    ],
+    "macysCliVersion": "1.291.0"
+  },
+  "engines": {
+    "node": "8.x",
+    "npm": "5.x"
+  },
+  "main": "src/mens-shoe-trends.js",
+  "devDependencies": {
+    "@core/dev-server": "^1.0.0",
+    "@core/lib": "^1.0.0",
+    "@core/server": "^1.0.0",
+    "lodash": "^4.17.4"
+  },
+  "dependencies": {
+    "@component/carousel": "^6.4.0",
+    "@component/common": "^1.0.0",
+    "@component/product-thumbnail": "3.108.0",
+    "@core/style-guide": "^2.49.0"
+  }
+}

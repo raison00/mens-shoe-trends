@@ -1,0 +1,28 @@
+/* The Overlay (background) */
+.full-overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    overflow-x: hidden;
+    background-color: white;
+    padding: 50px;
+
+    /* Position the content inside the overlay */
+    .overlay-content {
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Position the close button (top right corner) */
+    .close-button {
+        position: fixed;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        top: 20px;
+        right: 20px;
+    }
+}
