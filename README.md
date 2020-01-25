@@ -1,4 +1,4 @@
-#Trending Shoes for Men 
+# Trending Shoes for Men 
 
 This was created as the Men's Shoe Trends of 2018/2019 new framework template for responsive design and product/content integration of product api. 
 
@@ -8,3 +8,4 @@ About this ongoing content campaign:
 
 Master today's Trending Shoes for Men. From men's casual shoes like slip on sandals to the more formal oxford shoes, this will take care of all your style needs.
 
+production url: https://www.macys.com/p/mens-shoe-trends
