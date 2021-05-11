@@ -121,7 +121,7 @@
     "@core/dev-server": "^1.0.0",
     "@core/lib": "^1.0.0",
     "@core/server": "^1.0.0",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.21"
   },
   "dependencies": {
     "@component/carousel": "^6.4.0",
